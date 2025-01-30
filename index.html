@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granite State Tech Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --phthalo-green: #123524;
+            --complement-blue: #123549;
+            --granite-gray: #636363;
+        }
+        
+        .navbar {
+            background-color: var(--phthalo-green) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--complement-blue);
+            border-color: var(--complement-blue);
+        }
+        
+        .btn-primary:hover {
+            background-color: #1a4c6b;
+            border-color: #1a4c6b;
+        }
+        
+        .service-card {
+            border-color: var(--granite-gray);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hero-section {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(rgba(18, 53, 36, 0.7), rgba(18, 53, 73, 0.7)), url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Granite State Tech Services</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="tel:518-929-4295" class="text-white text-decoration-none me-3">
+                        <i class="fas fa-phone me-2"></i>518-929-4295
+                    </a>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consultationModal">
+                        Schedule Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Professional Web Solutions for Your Business</h1>
+            <p>Custom website design, SEO optimization, and comprehensive IT services to help your business grow in the digital age.</p>
+            <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#consultationModal">
+                Get Started Today
+            </button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Our Services</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Custom Website Design</h5>
+                        <p class="card-text">Professional, responsive websites tailored to your business needs. We create stunning designs that engage your customers and drive results.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">SEO Optimization</h5>
+                        <p class="card-text">Improve your online visibility with our comprehensive SEO services. We help your business rank higher in search results and attract more customers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card service-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">IT Services</h5>
+                        <p class="card-text">Complete IT solutions for your business, including network setup, security implementation, and technical support to keep your operations running smoothly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Consultation Modal -->
+    <div class="modal fade" id="consultationModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Schedule a Consultation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="consultationForm">
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="fullName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phoneNumber" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            
+            // In a real implementation, you would send this to your server
+            // For demonstration, we'll show how the email would be formatted
+            const emailBody = `New consultation request from:
+            Name: ${fullName}
+            Phone: ${phoneNumber}`;
+            
+            alert('Thank you! We will contact you soon.');
+            document.getElementById('consultationModal').querySelector('.btn-close').click();
+            this.reset();
+        });
+    </script>
+</body>
+</html>
