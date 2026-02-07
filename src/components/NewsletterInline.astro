@@ -1,0 +1,84 @@
+---
+import { BUTTONDOWN_EMBED_URL, BUTTONDOWN_TAG_NEWSLETTER } from '../consts';
+---
+
+<section class="newsletter-inline surface">
+  <div>
+    <p class="eyebrow">Newsletter</p>
+    <h3>Get the next workshop playbook.</h3>
+    <p>Short, practical notes on AI workflows, SEO, and conversion strategy.</p>
+  </div>
+  <form class="newsletter-form" action={BUTTONDOWN_EMBED_URL} method="POST" target="buttondown-embed-newsletter">
+    <input type="email" name="email" placeholder="you@company.com" required />
+    <input type="hidden" name="embed" value="1" />
+    <input type="hidden" name="tag" value={BUTTONDOWN_TAG_NEWSLETTER} />
+    <button class="btn btn-primary" type="submit">Subscribe</button>
+    <p class="lead-status" aria-live="polite"></p>
+  </form>
+  <p class="lead-note">Double opt-in enabled. Confirm from your inbox to finish subscription.</p>
+</section>
+
+<iframe title="buttondown" name="buttondown-embed-newsletter" style="display:none;"></iframe>
+
+<script is:inline>
+  const section = document.currentScript?.parentElement?.querySelector('.newsletter-inline');
+  if (section) {
+    const form = section.querySelector('.newsletter-form');
+    const status = form?.querySelector('.lead-status');
+    const track = (eventName, extra = {}) => {
+      window.dispatchEvent(new CustomEvent('gsts:event', { detail: { event: eventName, ...extra } }));
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: eventName, ...extra });
+    };
+
+    form?.addEventListener('submit', (event) => {
+      const emailField = form.querySelector('input[type="email"]');
+      const email = emailField?.value?.trim();
+
+      if (!email) {
+        event.preventDefault();
+        if (status) status.textContent = 'Please enter a valid email.';
+        return;
+      }
+
+      if (status) {
+        status.textContent = 'Check your inbox and click confirm to complete your subscription.';
+      }
+      track('newsletter_submit', { tag: form.querySelector('input[name="tag"]')?.value || '' });
+    });
+  }
+</script>
+
+<style>
+  .newsletter-inline {
+    padding: var(--space-xl);
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .newsletter-form {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .newsletter-form input {
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(18, 22, 20, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  .lead-status {
+    min-height: 1.2rem;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  .lead-note {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+</style>
