@@ -11,7 +11,19 @@ const navLinks = [
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/">
-      <img class="brand-logo" src="/logo.jpg" alt="Granite State Tech Services logo" />
+      <picture>
+        <source srcset="/logo.avif" type="image/avif" />
+        <source srcset="/logo.webp" type="image/webp" />
+        <img
+          class="brand-logo"
+          src="/logo.jpg"
+          alt="Granite State Tech Services logo"
+          width="44"
+          height="44"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
       <span class="brand-text">Granite State Tech Services</span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
