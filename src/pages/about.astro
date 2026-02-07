@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BOOKING_URL } from '../consts';
+---
+<BaseLayout
+  title="About | Granite State Tech Services"
+  description="Meet Granite State Tech Services. Practical AI workshops, local SEO strategy, and conversion-focused websites for New Hampshire businesses."
+>
+  <section class="page-hero">
+    <p class="eyebrow">About</p>
+    <h1>Practical growth systems for local businesses.</h1>
+    <p>
+      Granite State Tech Services helps New Hampshire service businesses turn AI, SEO, and website
+      traffic into booked calls. The focus is straightforward: fewer busywork hours, clearer funnels,
+      and measurable revenue outcomes.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={BOOKING_URL}>Book a consultation</a>
+      <a class="btn btn-ghost" href="/blog">Read the playbooks</a>
+    </div>
+  </section>
+
+  <section class="split">
+    <div>
+      <p class="eyebrow">How I work</p>
+      <h2>Built for operators, not theory.</h2>
+      <p>
+        Every engagement starts with one question: where is the current process leaking time,
+        conversions, or search visibility? From there, we prioritize the fastest path to value.
+      </p>
+      <ul class="list">
+        <li><span>01</span> Find the highest ROI workflow or funnel gap.</li>
+        <li><span>02</span> Build repeatable systems your team can actually run.</li>
+        <li><span>03</span> Track outcomes and iterate quickly.</li>
+      </ul>
+    </div>
+    <div class="surface credibility-panel">
+      <p class="eyebrow">What clients usually need</p>
+      <ul class="list">
+        <li><span>+</span> AI workshop rollout for real day-to-day tasks.</li>
+        <li><span>+</span> Local SEO cleanup and service page strategy.</li>
+        <li><span>+</span> Conversion-focused website refreshes.</li>
+        <li><span>+</span> A clear 30/60/90 day execution plan.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="surface promise">
+    <div>
+      <p class="eyebrow">Working promise</p>
+      <h2>Clear decisions, no fluff.</h2>
+      <p>
+        You get specific recommendations, scoped options, and concrete next steps. If something does
+        not move toward measurable impact, it does not make the plan.
+      </p>
+    </div>
+    <div class="promise-actions">
+      <a class="btn btn-primary" href={BOOKING_URL}>Schedule a call</a>
+      <a class="btn btn-ghost" href="tel:518-929-4295">Call 518-929-4295</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    display: grid;
+    gap: var(--space-lg);
+    margin-top: var(--space-3xl);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .credibility-panel {
+    padding: var(--space-xl);
+  }
+
+  .promise {
+    padding: var(--space-2xl);
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: center;
+  }
+
+  .promise-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+</style>
