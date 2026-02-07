@@ -1,0 +1,48 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
+}
+
+const { title, description, ogImage, structuredData } = Astro.props;
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Granite State Tech Services',
+  url: 'https://granitestatetechservices.com',
+  image: 'https://granitestatetechservices.com/og-default.jpg',
+  telephone: '+1-518-929-4295',
+  email: 'granitestatetechservices@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'NH',
+    addressCountry: 'US'
+  },
+  areaServed: {
+    '@type': 'State',
+    name: 'New Hampshire'
+  },
+  description: 'AI workshops, SEO strategy, and conversion-focused websites for New Hampshire businesses.'
+};
+const schema = structuredData ? [localBusinessSchema, ...(Array.isArray(structuredData) ? structuredData : [structuredData])] : localBusinessSchema;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} ogImage={ogImage} structuredData={schema} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

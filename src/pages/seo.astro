@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BOOKING_URL } from '../consts';
+
+const seoServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Local SEO Strategy',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Granite State Tech Services',
+    url: 'https://granitestatetechservices.com'
+  },
+  areaServed: {
+    '@type': 'State',
+    name: 'New Hampshire'
+  },
+  serviceType: 'Local SEO audit and strategy',
+  url: 'https://granitestatetechservices.com/seo',
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/InStock',
+    priceCurrency: 'USD'
+  }
+};
+---
+<BaseLayout
+  title="SEO Strategy | Granite State Tech Services"
+  description="Local SEO and content strategy built for service businesses that need steady leads."
+  structuredData={seoServiceSchema}
+>
+  <section class="page-hero">
+    <p class="eyebrow">SEO strategy</p>
+    <h1>Search visibility that turns into booked calls.</h1>
+    <p>
+      We fix the technical gaps, build focused service pages, and create content that answers
+      exactly what your buyers are asking.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={BOOKING_URL}>Request an SEO audit</a>
+      <a class="btn btn-ghost" href="/blog">Read SEO insights</a>
+    </div>
+  </section>
+
+  <section class="card-grid">
+    <article class="card">
+      <p class="eyebrow">Phase 01</p>
+      <h3>Local SEO audit</h3>
+      <p>Technical cleanup, Google Business Profile alignment, and quick ranking wins.</p>
+      <ul class="list">
+        <li><span>+</span> Site speed and index check</li>
+        <li><span>+</span> Competitor scan</li>
+        <li><span>+</span> Priority fixes list</li>
+      </ul>
+    </article>
+    <article class="card">
+      <p class="eyebrow">Phase 02</p>
+      <h3>Service page strategy</h3>
+      <p>One focused page per core offer with clear CTAs and search intent alignment.</p>
+      <ul class="list">
+        <li><span>+</span> Conversion ready copy</li>
+        <li><span>+</span> Location targeting</li>
+        <li><span>+</span> FAQ enrichment</li>
+      </ul>
+    </article>
+    <article class="card">
+      <p class="eyebrow">Phase 03</p>
+      <h3>Content cadence</h3>
+      <p>Evergreen articles that build trust and pull qualified traffic all year.</p>
+      <ul class="list">
+        <li><span>+</span> Topic planning</li>
+        <li><span>+</span> Lead magnet tie-ins</li>
+        <li><span>+</span> Reporting dashboard</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="split">
+    <div>
+      <p class="eyebrow">What changes</p>
+      <h2>Search rankings that keep improving.</h2>
+      <p>
+        Good SEO is not just traffic. It is qualified leads, the right keywords, and proof that
+        your business is the best local option.
+      </p>
+    </div>
+    <div class="surface outcome-panel">
+      <ul class="list">
+        <li><span>01</span> Clear priority list for the next 30 days.</li>
+        <li><span>02</span> Service pages that convert and rank.</li>
+        <li><span>03</span> Sustainable content plan and reporting.</li>
+        <li><span>04</span> Consistent NAP and review strategy.</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    display: grid;
+    gap: var(--space-lg);
+    margin-top: var(--space-3xl);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .outcome-panel {
+    padding: var(--space-xl);
+  }
+</style>

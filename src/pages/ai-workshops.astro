@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BOOKING_URL } from '../consts';
+
+const aiWorkshopServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI Training Workshops',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Granite State Tech Services',
+    url: 'https://granitestatetechservices.com'
+  },
+  areaServed: {
+    '@type': 'State',
+    name: 'New Hampshire'
+  },
+  serviceType: 'AI workshop and workflow training',
+  url: 'https://granitestatetechservices.com/ai-workshops',
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/InStock',
+    priceCurrency: 'USD',
+    priceSpecification: {
+      '@type': 'PriceSpecification',
+      minPrice: 2500,
+      maxPrice: 12000,
+      priceCurrency: 'USD'
+    }
+  }
+};
+---
+<BaseLayout
+  title="AI Training Workshops | Granite State Tech Services"
+  description="Hands-on AI training workshops that turn real tasks into repeatable workflows for your team."
+  structuredData={aiWorkshopServiceSchema}
+>
+  <section class="page-hero">
+    <p class="eyebrow">AI training workshops</p>
+    <h1>Practical AI workshops that rewire workflows.</h1>
+    <p>
+      These are not lecture sessions. We pick real tasks, build reusable prompt systems, and
+      leave your team with a playbook you can keep using.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={BOOKING_URL}>Schedule a workshop call</a>
+      <a class="btn btn-ghost" href="/blog">See AI insights</a>
+    </div>
+  </section>
+
+  <section class="card-grid">
+    <article class="card">
+      <p class="eyebrow">Format 01</p>
+      <h3>Half-day workshop</h3>
+      <p>Ideal for leadership teams that want a clear AI workflow and fast adoption.</p>
+      <ul class="list">
+        <li><span>+</span> AI workflow map</li>
+        <li><span>+</span> Prompt starter kit</li>
+        <li><span>+</span> 30-day follow-up plan</li>
+      </ul>
+    </article>
+    <article class="card">
+      <p class="eyebrow">Format 02</p>
+          <h3>Full-day build session</h3>
+      <p>We build real assets together: marketing drafts, SOPs, proposals, and analysis.</p>
+      <ul class="list">
+        <li><span>+</span> Live use cases</li>
+        <li><span>+</span> Staff enablement</li>
+        <li><span>+</span> Confidence checks</li>
+      </ul>
+    </article>
+    <article class="card">
+      <p class="eyebrow">Format 03</p>
+          <h3>Workshop + rollout</h3>
+      <p>Includes the training plus a short engagement to lock in the new workflow.</p>
+      <ul class="list">
+        <li><span>+</span> Team adoption plan</li>
+        <li><span>+</span> Prompt library</li>
+        <li><span>+</span> Leadership reporting</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="pricing">
+    <div class="pricing-header">
+      <div>
+        <p class="eyebrow">Pricing approach</p>
+        <h2>Value-first pricing, not hourly billing.</h2>
+        <p>
+          We start with a short ROI discovery call to quantify the upside. Pricing is tied to
+          outcomes like time saved, fewer errors, and faster delivery.
+        </p>
+      </div>
+      <div class="pricing-note surface">
+        <p class="eyebrow">ROI discovery</p>
+        <p>We cover three questions before quoting:</p>
+        <ul class="list">
+          <li><span>01</span> Which workflows are most expensive today?</li>
+          <li><span>02</span> What does success look like in 30–90 days?</li>
+          <li><span>03</span> What efficiency or revenue lift is realistic?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <article class="card">
+        <p class="eyebrow">Option A</p>
+        <h3>Premium</h3>
+        <p>Full-day workshop + strategy audit + follow-up consulting.</p>
+        <ul class="list">
+          <li><span>+</span> 15–20 hours of follow-up</li>
+          <li><span>+</span> Custom prompt library</li>
+          <li><span>+</span> Ongoing Q&amp;A access</li>
+        </ul>
+        <p class="notice">Typical investment: $8k–$12k+</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Option B</p>
+        <h3>Core</h3>
+        <p>Half-day workshop + consulting support (most popular).</p>
+        <ul class="list">
+          <li><span>+</span> 10 hours of consulting</li>
+          <li><span>+</span> Workflow templates</li>
+          <li><span>+</span> 30-day adoption plan</li>
+        </ul>
+        <p class="notice">Typical investment: $5k–$8k</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Option C</p>
+        <h3>Starter</h3>
+        <p>Shorter training session for a smaller team.</p>
+        <ul class="list">
+          <li><span>+</span> Focused use case</li>
+          <li><span>+</span> Group training only</li>
+          <li><span>+</span> Clear next steps</li>
+        </ul>
+        <p class="notice">Typical investment: $2.5k–$4k</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="split">
+    <div>
+      <p class="eyebrow">Outcomes</p>
+      <h2>What your team walks away with.</h2>
+      <p>
+        We focus on speed, consistency, and measurable time savings. Every workshop is tied to
+        business goals, not AI hype.
+      </p>
+    </div>
+    <div class="surface outcome-panel">
+      <ul class="list">
+        <li><span>01</span> A workflow map for the top 2-3 high value tasks.</li>
+        <li><span>02</span> Prompt templates your team can reuse immediately.</li>
+        <li><span>03</span> A review loop to keep quality and compliance tight.</li>
+        <li><span>04</span> A measurement plan so you can prove ROI.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="split">
+    <div>
+      <p class="eyebrow">Objections</p>
+      <h2>Common questions, answered.</h2>
+      <p>
+        Pricing conversations are simpler when we compare cost to outcomes. Here is how I handle
+        the most common objections during workshops.
+      </p>
+    </div>
+    <div class="surface outcome-panel">
+      <ul class="list">
+        <li><span>01</span> “It’s expensive.” Compared to the cost of slow workflows, most teams see 5–10x returns.</li>
+        <li><span>02</span> “We can do it in-house.” You can, but most teams want an expert to avoid costly missteps.</li>
+        <li><span>03</span> “Can you discount?” We trade scope, timing, or add-ons instead of cutting value.</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    display: grid;
+    gap: var(--space-lg);
+    margin-top: var(--space-3xl);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .pricing {
+    display: grid;
+    gap: var(--space-2xl);
+  }
+
+  .pricing-header {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: center;
+  }
+
+  .pricing-note {
+    padding: var(--space-xl);
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .outcome-panel {
+    padding: var(--space-xl);
+  }
+</style>
