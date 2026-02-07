@@ -1,0 +1,197 @@
+---
+import { BOOKING_URL } from '../consts';
+
+const navLinks = [
+  { label: 'About', href: '/about' },
+  { label: 'AI Training Workshops', href: '/ai-workshops' },
+  { label: 'SEO', href: '/seo' },
+  { label: 'Blog', href: '/blog' }
+];
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/logo.jpg" alt="Granite State Tech Services logo" />
+      <span class="brand-text">Granite State Tech Services</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
+      <span>Menu</span>
+    </button>
+    <nav class="nav">
+      {navLinks.map((link) => (
+        <a href={link.href} class="nav-link">{link.label}</a>
+      ))}
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-ghost" href="tel:518-929-4295">Call 518-929-4295</a>
+      <a class="btn btn-primary" href={BOOKING_URL}>Schedule a consult</a>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" hidden>
+    {navLinks.map((link) => (
+      <a href={link.href} class="mobile-nav-link">{link.label}</a>
+    ))}
+    <div class="mobile-nav-actions">
+      <a class="btn btn-ghost" href="tel:518-929-4295">Call 518-929-4295</a>
+      <a class="btn btn-primary" href={BOOKING_URL}>Schedule a consult</a>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  const header = document.currentScript?.previousElementSibling;
+  const toggle = header?.querySelector('.menu-toggle');
+  const mobileNav = header?.querySelector('#mobile-nav');
+
+  if (toggle && mobileNav) {
+    const closeMenu = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('hidden', '');
+      document.body.classList.remove('menu-open');
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      if (isOpen) {
+        mobileNav.setAttribute('hidden', '');
+      } else {
+        mobileNav.removeAttribute('hidden');
+      }
+      document.body.classList.toggle('menu-open', !isOpen);
+    });
+
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 980) {
+        closeMenu();
+      }
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(247, 244, 239, 0.92);
+    border-bottom: 1px solid rgba(18, 22, 20, 0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  .menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    padding: 0.6rem 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text);
+    font: inherit;
+    font-weight: 600;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: 1rem var(--space-lg);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-weight: 600;
+  }
+
+  .brand-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(18, 22, 20, 0.08);
+  }
+
+  .brand-text {
+    color: var(--text);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .nav-link {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .nav-link:hover {
+    color: var(--text);
+  }
+
+  .header-cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  .mobile-nav-link {
+    color: var(--text);
+    font-weight: 500;
+    padding: 0.45rem 0;
+  }
+
+  .mobile-nav-actions {
+    display: grid;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+  }
+
+  @media (max-width: 980px) {
+    :global(body.menu-open) {
+      overflow: hidden;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+      margin-left: auto;
+    }
+
+    .nav {
+      display: none;
+    }
+
+    .header-cta {
+      display: none;
+    }
+
+    .mobile-nav {
+      display: grid;
+      gap: var(--space-sm);
+      padding: 0 var(--space-lg) var(--space-lg);
+      border-top: 1px solid rgba(18, 22, 20, 0.08);
+      background: rgba(247, 244, 239, 0.98);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .header-inner {
+      padding: 0.8rem var(--space-md);
+      gap: var(--space-sm);
+    }
+  }
+</style>
