@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsletterInline from '../../components/NewsletterInline.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<BaseLayout
+  title="Blog | Granite State Tech Services"
+  description="AI workshop insights, SEO quick wins, and website conversion strategy."
+>
+  <section class="page-hero">
+    <p class="eyebrow">Blog</p>
+    <h1>Insights that power the funnel.</h1>
+    <p>Preview the latest playbooks. Unlock the full article by joining the list.</p>
+  </section>
+
+  <section class="card-grid">
+    {posts.map((post) => (
+      <article class="card">
+        <p class="eyebrow">{post.data.tags?.[0] ?? 'Article'}</p>
+        <h3>{post.data.title}</h3>
+        <p>{post.data.description}</p>
+        <div class="post-meta">
+          <span class="tag">{post.data.pubDate.toLocaleDateString()}</span>
+          <a class="btn btn-ghost" href={`/blog/${post.slug}`}>Read preview</a>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <section>
+    <NewsletterInline />
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    display: grid;
+    gap: var(--space-lg);
+    margin-top: var(--space-3xl);
+  }
+
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+</style>

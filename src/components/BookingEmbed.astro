@@ -1,0 +1,50 @@
+---
+import { BOOKING_EMBED_HEIGHT, BOOKING_EMBED_URL, BOOKING_URL } from '../consts';
+
+const embedUrl = BOOKING_EMBED_URL?.trim();
+const showEmbed = Boolean(embedUrl);
+---
+
+<div class="booking-embed">
+  {showEmbed ? (
+    <div class="booking-frame surface">
+      <iframe
+        title="Schedule a consultation"
+        src={embedUrl}
+        width="100%"
+        height={BOOKING_EMBED_HEIGHT}
+        loading="lazy"
+        style="border:0;"
+      ></iframe>
+    </div>
+  ) : (
+    <div class="booking-fallback surface">
+      <p class="eyebrow">Scheduling</p>
+      <h3>Book instantly with Zoho Bookings.</h3>
+      <p>Pick a time that works for you. If you prefer, call instead.</p>
+      <div class="booking-actions">
+        <a class="btn btn-primary" href={BOOKING_URL} target="_blank" rel="noopener">Open booking page</a>
+        <a class="btn btn-ghost" href="tel:518-929-4295">Call 518-929-4295</a>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .booking-frame {
+    padding: var(--space-sm);
+    overflow: hidden;
+  }
+
+  .booking-fallback {
+    padding: var(--space-xl);
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .booking-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LeadGate from '../../components/LeadGate.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<BaseLayout
+  title={`${post.data.title} | Granite State Tech Services`}
+  description={post.data.description}
+>
+  <article class="post">
+    <header class="post-header">
+      <p class="eyebrow">{post.data.tags?.join(' / ')}</p>
+      <h1>{post.data.title}</h1>
+      <p>{post.data.description}</p>
+      <span class="tag">Published {post.data.pubDate.toLocaleDateString()}</span>
+    </header>
+
+    <LeadGate
+      slug={post.slug}
+      preview={post.data.preview}
+      ctaTitle="Unlock the full article"
+      ctaCopy="Get the full playbook plus new AI workshop and SEO insights."
+    >
+      <div class="post-body">
+        <Content />
+      </div>
+    </LeadGate>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    margin-top: var(--space-3xl);
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .post-header {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .post-body :global(h2) {
+    margin-top: var(--space-xl);
+  }
+
+  .post-body :global(ul) {
+    padding-left: 1.2rem;
+    color: var(--text-muted);
+  }
+</style>

@@ -1,0 +1,51 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="footer-brand">Granite State Tech Services</p>
+      <p class="footer-copy">AI workshops, SEO strategy, and high-performing websites for New Hampshire businesses.</p>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:granitestatetechservices@gmail.com">granitestatetechservices@gmail.com</a>
+      <a href="tel:518-929-4295">518-929-4295</a>
+      <a href="/blog">Blog</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid rgba(232, 227, 218, 0.08);
+    padding: var(--space-2xl) 0;
+    margin-top: var(--space-3xl);
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: start;
+  }
+
+  .footer-brand {
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    color: var(--text);
+  }
+
+  .footer-copy {
+    color: var(--text-muted);
+  }
+
+  .footer-links {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .footer-links a {
+    color: var(--text-muted);
+  }
+
+  .footer-links a:hover {
+    color: var(--text);
+  }
+</style>

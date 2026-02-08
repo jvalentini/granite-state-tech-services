@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingEmbed from '../components/BookingEmbed.astro';
+import { getCollection } from 'astro:content';
+import { BOOKING_URL } from '../consts';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+<BaseLayout
+  title="Granite State Tech Services"
+  description="AI workshops, SEO strategy, and websites that convert for New Hampshire businesses."
+>
+  <section class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">New Hampshire based</p>
+      <h1>Turn AI, SEO, and your website into a lead engine.</h1>
+      <p>
+        I build practical AI training workshops, search-driven growth, and conversion focused websites for
+        local businesses that want measurable results.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href={BOOKING_URL}>Book a consult</a>
+        <a class="btn btn-ghost" href="/ai-workshops">Explore AI workshops</a>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">Hands-on AI training workshops</span>
+        <span class="tag">Local SEO strategy</span>
+        <span class="tag">Websites that convert</span>
+      </div>
+    </div>
+    <div class="hero-panel surface">
+      <h3>What you get</h3>
+      <ul class="list">
+        <li><span>01</span> A tailored workshop that changes day-to-day workflows.</li>
+        <li><span>02</span> A clear SEO plan with quick wins and long-term growth.</li>
+        <li><span>03</span> A website that makes scheduling effortless.</li>
+      </ul>
+      <p class="notice">Most clients see momentum in the first 30 days.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="split">
+      <div>
+        <p class="eyebrow">Core services</p>
+        <h2>Three paths to more qualified leads.</h2>
+        <p>
+          Each engagement is designed to convert. You can start with a workshop, build a new
+          pipeline with SEO, or fix your website so it sells for you.
+        </p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>AI Training Workshops</h3>
+          <p>Hands-on sessions that turn AI into real workflows your team can repeat.</p>
+          <a class="btn btn-ghost" href="/ai-workshops">See workshop formats</a>
+        </article>
+        <article class="card">
+          <h3>SEO Strategy</h3>
+          <p>Local SEO audits, content strategy, and technical fixes that move rankings.</p>
+          <a class="btn btn-ghost" href="/seo">View SEO services</a>
+        </article>
+        <article class="card">
+          <h3>Websites That Convert</h3>
+          <p>Modern, fast sites with clear CTAs and strong proof built in.</p>
+          <a class="btn btn-ghost" href={BOOKING_URL}>Schedule a consult</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="insights">
+    <div class="insights-header">
+      <div>
+        <p class="eyebrow">Insights</p>
+        <h2>Short reads that open the funnel.</h2>
+      </div>
+      <a class="btn btn-ghost" href="/blog">View all posts</a>
+    </div>
+    <div class="card-grid">
+      {posts.map((post) => (
+        <article class="card">
+          <p class="eyebrow">{post.data.tags?.[0] ?? 'Article'}</p>
+          <h3>{post.data.title}</h3>
+          <p>{post.data.description}</p>
+          <a class="btn btn-ghost" href={`/blog/${post.slug}`}>Read preview</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="consultation" class="consultation surface">
+    <div>
+      <p class="eyebrow">Consultation</p>
+      <h2>Ready for a focused growth plan?</h2>
+      <p>
+        Pick a time that works and I will come prepared with the right next step, whether that is
+        a workshop, SEO plan, or a website refresh.
+      </p>
+      <div class="consultation-meta">
+        <span class="tag">Response within 1 business day</span>
+        <span class="tag">Remote or on-site in NH</span>
+      </div>
+      <ul class="list consult-list">
+        <li><span>01</span> We quantify the ROI target and success metrics.</li>
+        <li><span>02</span> You receive three clear package options.</li>
+        <li><span>03</span> We align on scope before any pricing decision.</li>
+      </ul>
+      <div class="consultation-actions">
+        <a class="btn btn-primary" href={BOOKING_URL}>Book instantly with Zoho</a>
+        <a class="btn btn-ghost" href="tel:518-929-4295">Call instead</a>
+      </div>
+    </div>
+    <BookingEmbed />
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    gap: var(--space-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: var(--space-3xl);
+    align-items: center;
+  }
+
+  .hero-content {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .hero-panel {
+    padding: var(--space-xl);
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .insights-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  .consultation {
+    padding: var(--space-2xl);
+    display: grid;
+    gap: var(--space-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: start;
+  }
+
+  .consultation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .consult-list {
+    margin-top: var(--space-md);
+  }
+
+  @media (max-width: 720px) {
+    .insights-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
