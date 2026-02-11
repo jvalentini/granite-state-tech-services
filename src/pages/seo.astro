@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingEmbed from '../components/BookingEmbed.astro';
 import { BOOKING_URL } from '../consts';
 
 const seoServiceSchema = {
@@ -40,12 +41,19 @@ const seoServiceSchema = {
       <a class="btn btn-primary" href={BOOKING_URL}>Request a free SEO audit</a>
       <a class="btn btn-ghost" href="#how-it-works">See how it works</a>
     </div>
+    <div class="trust-items">
+      <span>NH-based</span>
+      <span class="trust-divider"></span>
+      <span>Conversion-focused</span>
+      <span class="trust-divider"></span>
+      <span>No long-term contracts</span>
+    </div>
   </section>
 
   <section class="problem surface">
-    <h2>You've probably been here before.</h2>
+    <h2>You've been here before.</h2>
     <p>
-      You paid for SEO. You got a monthly report full of graphs going up and to the right.
+      You paid for SEO. Got a monthly report full of graphs going up and to the right.
       Traffic increased. Rankings improved.
     </p>
     <p>
@@ -80,7 +88,7 @@ const seoServiceSchema = {
         <h3>Build pages that convert</h3>
         <p>
           One focused service page for each thing you do, written for the people searching for it.
-          Clear CTAs. Location targeting. Answers to the questions your prospects actually ask.
+          Clear CTAs, location targeting, answers to the questions your prospects actually ask.
         </p>
       </article>
       <article class="card">
@@ -92,6 +100,29 @@ const seoServiceSchema = {
         </p>
       </article>
     </div>
+  </section>
+
+  <section class="results">
+    <p class="eyebrow">What to expect</p>
+    <h2>Realistic outcomes, not hype.</h2>
+    <div class="card-grid">
+      <div class="stat-card surface">
+        <span class="stat-number">60-90 days</span>
+        <span class="stat-label">Page 1 rankings for local service keywords</span>
+      </div>
+      <div class="stat-card surface">
+        <span class="stat-number">3-5x</span>
+        <span class="stat-label">Increase in qualified leads from search</span>
+      </div>
+      <div class="stat-card surface">
+        <span class="stat-number">6 months</span>
+        <span class="stat-label">Measurable call volume increase</span>
+      </div>
+    </div>
+    <p class="results-note">
+      Results vary by market and competition. I'll give you realistic timelines for your
+      specific situation on our first call.
+    </p>
   </section>
 
   <section class="split">
@@ -108,8 +139,8 @@ const seoServiceSchema = {
         <li><span>01</span> Technical audit with a prioritized fix list.</li>
         <li><span>02</span> Optimized service pages — one per core offer.</li>
         <li><span>03</span> Google Business Profile cleanup and optimization.</li>
-        <li><span>04</span> Content calendar with three months of topics.</li>
-        <li><span>05</span> Monthly reporting tied to leads, not just traffic.</li>
+        <li><span>04</span> Content calendar with three months of topics tied to booking-intent keywords.</li>
+        <li><span>05</span> Monthly reporting tied to leads and calls, not just traffic.</li>
       </ul>
     </div>
   </section>
@@ -193,15 +224,18 @@ const seoServiceSchema = {
   </section>
 
   <section class="final-cta surface">
-    <h2>Find out what's holding you back.</h2>
-    <p>
-      Book a free 30-minute SEO audit call. I'll pull up your site, your competitors, and your
-      Google presence live — and show you the three highest-impact fixes you can make this month.
-    </p>
-    <p class="guarantee">
-      No contracts. No pitch deck. Just an honest look at where you stand.
-    </p>
-    <a class="btn btn-primary btn-xl" href={BOOKING_URL}>Book your free audit call</a>
+    <div>
+      <h2>Find out what's holding you back.</h2>
+      <p>
+        Book a free 30-minute SEO audit call. I'll pull up your site, your competitors, and your
+        Google presence live — and show you the three highest-impact fixes you can make this month.
+      </p>
+      <p class="guarantee">
+        No contracts. No pitch deck. Just an honest look at where you stand.
+      </p>
+      <a class="btn btn-primary btn-xl" href={BOOKING_URL}>Book your free audit call</a>
+    </div>
+    <BookingEmbed />
   </section>
 </BaseLayout>
 
@@ -228,6 +262,23 @@ const seoServiceSchema = {
     gap: var(--space-md);
   }
 
+  .trust-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md) var(--space-lg);
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  .trust-divider {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--granite-300);
+    flex-shrink: 0;
+  }
+
   .problem {
     padding: var(--space-2xl);
     max-width: 900px;
@@ -247,6 +298,44 @@ const seoServiceSchema = {
     font-size: 1.1rem;
     max-width: 720px;
     margin-bottom: var(--space-2xl);
+  }
+
+  .results {
+    margin: var(--space-3xl) 0;
+  }
+
+  .results h2 {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xl);
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-secondary-strong);
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    max-width: 200px;
+  }
+
+  .results-note {
+    text-align: center;
+    font-style: italic;
+    margin-top: var(--space-xl);
+    color: var(--text-dim);
+    font-size: 0.9rem;
   }
 
   .deliverables-panel {
@@ -324,12 +413,12 @@ const seoServiceSchema = {
   }
 
   .final-cta {
-    text-align: center;
+    text-align: left;
     padding: var(--space-3xl);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-lg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
   }
 
   .final-cta p {
@@ -340,5 +429,11 @@ const seoServiceSchema = {
     font-style: italic;
     color: var(--text-dim);
     font-size: 0.95rem;
+  }
+
+  @media (max-width: 920px) {
+    .final-cta {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

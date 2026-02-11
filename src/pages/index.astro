@@ -13,25 +13,84 @@ const posts = (await getCollection('blog'))
   description="AI workshops, SEO strategy, and websites that convert for New Hampshire businesses."
 >
   <section class="hero">
-    <p class="eyebrow">New Hampshire • Conversion-focused • Results-driven</p>
-    <h1>Turn your website into<br>a booking machine.</h1>
+    <p class="eyebrow">New Hampshire's growth partner for service businesses</p>
+    <h1>More booked calls.<br>Less guesswork.</h1>
     <p class="hero-subhead">
-      AI training, local SEO, and conversion websites for NH service businesses
-      — attorneys, contractors, healthcare practices — that need more booked
-      appointments, not more vanity metrics.
+      Whether you need a website that converts, search rankings that drive calls,
+      or a team that actually uses AI — we build the system that gets your phone ringing.
     </p>
-    <a class="btn btn-primary btn-xl" href={BOOKING_URL}>Book your free 45-min strategy call</a>
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-xl" href={BOOKING_URL}>Book your free strategy call</a>
+      <a class="btn btn-ghost" href="#choose-your-path">See how we help</a>
+    </div>
   </section>
 
-  <section class="audience">
-    <p class="eyebrow">Who this is for</p>
-    <p class="audience-lead">Built for NH service businesses that live and die by booked appointments:</p>
-    <ul class="audience-list">
-      <li>Attorneys &amp; law firms</li>
-      <li>Contractors &amp; trades</li>
-      <li>Healthcare practices</li>
-      <li>Consultants &amp; advisors</li>
-    </ul>
+  <section class="trust-bar">
+    <div class="trust-items">
+      <span>NH-based and founder-operated</span>
+      <span class="trust-divider"></span>
+      <span>50+ workshops delivered</span>
+      <span class="trust-divider"></span>
+      <span>Conversion-focused, not vanity metrics</span>
+    </div>
+  </section>
+
+  <section id="choose-your-path" class="paths">
+    <div class="paths-header">
+      <p class="eyebrow">Choose your starting point</p>
+      <h2>What's the biggest bottleneck<br>in your growth right now?</h2>
+      <p class="paths-subhead">
+        Every business we work with has a different starting point. Pick the one that
+        sounds most like you — each leads to a focused plan built around your specific situation.
+      </p>
+    </div>
+
+    <div class="path-grid">
+      <a href="/web-design/" class="path-card surface">
+        <span class="path-number">01</span>
+        <h3>"My website isn't bringing in leads."</h3>
+        <p>
+          Your site looks fine, but nobody books through it. Visitors land, look around, and leave.
+          You need a site built to convert — not just exist.
+        </p>
+        <ul class="path-list">
+          <li>Conversion-focused design</li>
+          <li>Built-in booking</li>
+          <li>SEO-ready from day one</li>
+        </ul>
+        <span class="path-link">Explore web design <span class="arrow">&rarr;</span></span>
+      </a>
+
+      <a href="/seo/" class="path-card surface">
+        <span class="path-number">02</span>
+        <h3>"People can't find us on Google."</h3>
+        <p>
+          You know your services are good, but when locals search for what you do, your
+          competitors show up first. You need to own the searches that lead to calls.
+        </p>
+        <ul class="path-list">
+          <li>Local keyword targeting</li>
+          <li>Google Business optimization</li>
+          <li>Content that ranks and converts</li>
+        </ul>
+        <span class="path-link">Explore SEO services <span class="arrow">&rarr;</span></span>
+      </a>
+
+      <a href="/ai-workshops/" class="path-card surface">
+        <span class="path-number">03</span>
+        <h3>"My team wastes hours on repetitive work."</h3>
+        <p>
+          You've heard AI can help, maybe even tried ChatGPT a few times. But nobody on your
+          team has built it into their actual workflow. You need a system, not a subscription.
+        </p>
+        <ul class="path-list">
+          <li>Hands-on workshop training</li>
+          <li>Custom prompt playbooks</li>
+          <li>Measurable time savings</li>
+        </ul>
+        <span class="path-link">Explore AI workshops <span class="arrow">&rarr;</span></span>
+      </a>
+    </div>
   </section>
 
   <section class="narrative">
@@ -47,24 +106,33 @@ const posts = (await getCollection('blog'))
     </div>
 
     <div class="story-card surface highlight">
-      <h2>What we do differently</h2>
+      <h2>What we optimize for</h2>
       <p>
-        Every engagement optimizes for one metric: <strong>booked consultations per month</strong>.
-        That's it. If a tactic doesn't drive bookings, we don't do it.
+        Every engagement centers on one metric: <strong>booked consultations per month</strong>.
+        If a tactic doesn't drive bookings, we don't do it.
       </p>
-      <div class="approach">
-        <div class="approach-item">
-          <strong>AI Workshops</strong>
-          <p>Train your team on tools that free up 8+ hours per week. That time goes to revenue-generating work.</p>
-        </div>
-        <div class="approach-item">
-          <strong>Local SEO</strong>
-          <p>Rank for searches that convert in NH. "AI consultant Manchester NH" beats "AI news" every time.</p>
-        </div>
-        <div class="approach-item">
-          <strong>Conversion Websites</strong>
-          <p>Fast sites with clear CTAs. Booking widgets, not buried contact forms. Speed matters—every 100ms costs conversions.</p>
-        </div>
+    </div>
+  </section>
+
+  <section class="audience">
+    <p class="eyebrow">Who this is for</p>
+    <h2>Built for NH businesses that live and die by appointments</h2>
+    <div class="audience-grid">
+      <div class="audience-item">
+        <strong>Attorneys and law firms</strong>
+        <p>Turn search visibility into signed retainers.</p>
+      </div>
+      <div class="audience-item">
+        <strong>Contractors and trades</strong>
+        <p>Fill your calendar with qualified local jobs.</p>
+      </div>
+      <div class="audience-item">
+        <strong>Healthcare practices</strong>
+        <p>Grow patient volume with search and referrals.</p>
+      </div>
+      <div class="audience-item">
+        <strong>Consultants and advisors</strong>
+        <p>Build a pipeline that doesn't depend on referrals alone.</p>
       </div>
     </div>
   </section>
@@ -78,46 +146,12 @@ const posts = (await getCollection('blog'))
       </div>
       <div class="stat-card surface">
         <span class="stat-number">NH</span>
-        <span class="stat-label">Based &amp; founder-operated</span>
+        <span class="stat-label">Based and founder-operated</span>
       </div>
       <div class="stat-card surface">
         <span class="stat-number">&lt; 24hr</span>
         <span class="stat-label">Response time</span>
       </div>
-    </div>
-    <blockquote class="testimonial">
-      <p>"Placeholder — swap with real client testimonial when available."</p>
-      <cite>— Client Name, Company</cite>
-    </blockquote>
-  </section>
-
-  <section class="results">
-    <h2>What to expect</h2>
-    <ul class="list">
-      <li><span>→</span> More booked consultations within 90 days</li>
-      <li><span>→</span> Page 1 rankings for your local service keywords</li>
-      <li><span>→</span> A website that loads fast and converts visitors into calls</li>
-    </ul>
-  </section>
-
-  <section class="services">
-    <h2>Choose your starting point</h2>
-    <div class="card-grid">
-      <article class="card">
-        <h3>Start with AI Training</h3>
-        <p>Your team learns ChatGPT, Claude, and automation in a hands-on workshop. Leave with workflows you'll use Monday.</p>
-        <a class="btn btn-ghost" href="/ai-workshops">See workshop formats →</a>
-      </article>
-      <article class="card">
-        <h3>Start with SEO</h3>
-        <p>Get found when locals search for your services. Technical audits, Google Business optimization, and content that ranks — focused on keywords that drive bookings, not blog traffic.</p>
-        <a class="btn btn-ghost" href="/seo">View SEO services →</a>
-      </article>
-      <article class="card">
-        <h3>Start with a Website</h3>
-        <p>A fast, modern site with booking built in. No contact form graveyards — visitors see availability and schedule in under 60 seconds.</p>
-        <a class="btn btn-ghost" href={BOOKING_URL}>Start a web project →</a>
-      </article>
     </div>
   </section>
 
@@ -129,11 +163,10 @@ const posts = (await getCollection('blog'))
           <p class="eyebrow">{post.data.tags?.[0] ?? 'Article'}</p>
           <h3>{post.data.title}</h3>
           <p>{post.data.description}</p>
-          <a class="btn btn-ghost" href={`/blog/${post.slug}`}>Read more →</a>
+          <a class="btn btn-ghost" href={`/blog/${post.slug}`}>Read more &rarr;</a>
         </article>
       ))}
     </div>
-    <p class="blog-cta">Want results like these? <a href={BOOKING_URL}>Book a free strategy call</a></p>
   </section>
 
   <section class="final-cta surface">
@@ -161,7 +194,7 @@ const posts = (await getCollection('blog'))
   .hero {
     text-align: center;
     padding: var(--space-3xl) 0;
-    margin: var(--space-3xl) 0;
+    margin: var(--space-2xl) 0 var(--space-xl);
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
@@ -170,38 +203,142 @@ const posts = (await getCollection('blog'))
 
   .hero-subhead {
     max-width: 640px;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.7;
     color: var(--text-dim);
   }
 
-  .audience {
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+
+  /* Trust bar */
+  .trust-bar {
     text-align: center;
     margin: 0 0 var(--space-3xl);
   }
 
-  .audience-lead {
-    font-size: 1.1rem;
-    margin: var(--space-md) 0 var(--space-lg);
-  }
-
-  .audience-list {
-    list-style: none;
-    padding: 0;
+  .trust-items {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--space-sm) var(--space-xl);
-    font-size: 1rem;
+    align-items: center;
+    gap: var(--space-md) var(--space-lg);
+    font-size: 0.9rem;
     color: var(--text-dim);
+    letter-spacing: 0.01em;
   }
 
-  .audience-list li::before {
-    content: "✓ ";
+  .trust-divider {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--granite-300);
+    flex-shrink: 0;
+  }
+
+  /* Persona paths */
+  .paths {
+    margin: var(--space-3xl) 0;
+  }
+
+  .paths-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .paths-subhead {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .path-grid {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .path-card {
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  }
+
+  .path-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  .path-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-secondary-strong);
+    line-height: 1;
+  }
+
+  .path-card h3 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    color: var(--text);
+  }
+
+  .path-card p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .path-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-sm) 0 0;
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .path-list li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .path-list li::before {
+    content: "+";
+    position: absolute;
+    left: 0;
     color: var(--accent-secondary-strong);
     font-weight: 700;
   }
 
+  .path-link {
+    margin-top: auto;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .path-link .arrow {
+    transition: transform 200ms var(--ease-out);
+  }
+
+  .path-card:hover .path-link .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Narrative */
   .narrative {
     display: flex;
     flex-direction: column;
@@ -235,29 +372,38 @@ const posts = (await getCollection('blog'))
     color: white;
   }
 
-  .approach {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
-    margin-top: var(--space-xl);
+  /* Audience */
+  .audience {
+    margin: var(--space-3xl) 0;
   }
 
-  .approach-item {
+  .audience h2 {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .audience-item {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
   }
 
-  .approach-item strong {
-    font-size: 1.1rem;
+  .audience-item strong {
+    font-size: 1.05rem;
+    color: var(--text);
   }
 
-  .approach-item p {
+  .audience-item p {
     font-size: 0.95rem;
-    line-height: 1.6;
-    opacity: 0.95;
+    margin: 0;
   }
 
+  /* Trust */
   .trust {
     margin: var(--space-3xl) 0;
     text-align: center;
@@ -276,7 +422,7 @@ const posts = (await getCollection('blog'))
   }
 
   .stat-number {
-    font-family: var(--font-heading);
+    font-family: var(--font-display);
     font-size: 2rem;
     font-weight: 700;
     color: var(--accent-secondary-strong);
@@ -287,47 +433,7 @@ const posts = (await getCollection('blog'))
     color: var(--text-dim);
   }
 
-  .testimonial {
-    max-width: 600px;
-    margin: var(--space-2xl) auto 0;
-    border-left: none;
-    padding: 0;
-    text-align: center;
-  }
-
-  .testimonial p {
-    font-style: italic;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--text-dim);
-  }
-
-  .testimonial cite {
-    display: block;
-    margin-top: var(--space-sm);
-    font-size: 0.9rem;
-    font-style: normal;
-    color: var(--text-dim);
-  }
-
-  .results {
-    margin: var(--space-3xl) 0;
-    max-width: 640px;
-  }
-
-  .results h2 {
-    margin-bottom: var(--space-xl);
-  }
-
-  .services {
-    margin: var(--space-3xl) 0;
-  }
-
-  .services h2 {
-    text-align: center;
-    margin-bottom: var(--space-2xl);
-  }
-
+  /* Blog */
   .blog {
     margin: var(--space-3xl) 0;
   }
@@ -336,19 +442,7 @@ const posts = (await getCollection('blog'))
     margin-bottom: var(--space-xl);
   }
 
-  .blog-cta {
-    text-align: center;
-    margin-top: var(--space-xl);
-    font-size: 1rem;
-    color: var(--text-dim);
-  }
-
-  .blog-cta a {
-    color: var(--accent-secondary-strong);
-    font-weight: 600;
-    text-decoration: underline;
-  }
-
+  /* Final CTA */
   .final-cta {
     padding: var(--space-3xl);
     display: grid;
@@ -365,17 +459,20 @@ const posts = (await getCollection('blog'))
   }
 
   @media (max-width: 920px) {
-    .approach,
+    .path-grid,
     .final-cta {
       grid-template-columns: 1fr;
     }
   }
 
   @media (max-width: 600px) {
-    .audience-list {
+    .trust-divider {
+      display: none;
+    }
+
+    .trust-items {
       flex-direction: column;
-      align-items: center;
-      gap: var(--space-sm);
+      gap: var(--space-xs);
     }
   }
 </style>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingEmbed from '../components/BookingEmbed.astro';
 import { BOOKING_URL } from '../consts';
 
 const aiWorkshopServiceSchema = {
@@ -31,54 +32,151 @@ const aiWorkshopServiceSchema = {
 };
 ---
 <BaseLayout
-  title="AI Training Workshops | Granite State Tech Services"
-  description="Hands-on AI training workshops that turn real tasks into repeatable workflows for your team."
+  title="AI Training Workshops for NH Businesses | Granite State Tech Services"
+  description="Hands-on AI training workshops that turn real tasks into repeatable workflows. Not lectures — your team builds prompt systems and playbooks they'll use Monday."
   structuredData={aiWorkshopServiceSchema}
 >
   <section class="page-hero">
     <p class="eyebrow">AI training workshops</p>
-    <h1>Practical AI workshops that rewire workflows.</h1>
-    <p>
-      These are not lecture sessions. We pick real tasks, build reusable prompt systems, and
-      leave your team with a playbook you can keep using.
+    <h1>Stop experimenting with AI.<br>Start deploying it.</h1>
+    <p class="hero-sub">
+      Your team doesn't need another demo of what AI can do. They need someone to sit down,
+      pick their real tasks, and build the workflows they'll actually use every week.
     </p>
     <div class="hero-actions">
       <a class="btn btn-primary" href={BOOKING_URL}>Schedule a workshop call</a>
-      <a class="btn btn-ghost" href="/blog">See AI insights</a>
+      <a class="btn btn-ghost" href="#formats">See workshop formats</a>
+    </div>
+    <div class="trust-items">
+      <span>50+ workshops delivered</span>
+      <span class="trust-divider"></span>
+      <span>NH-based</span>
+      <span class="trust-divider"></span>
+      <span>Hands-on, not lectures</span>
     </div>
   </section>
 
-  <section class="card-grid">
-    <article class="card">
-      <p class="eyebrow">Format 01</p>
-      <h3>Half-day workshop</h3>
-      <p>Ideal for leadership teams that want a clear AI workflow and fast adoption.</p>
-      <ul class="list">
-        <li><span>+</span> AI workflow map</li>
-        <li><span>+</span> Prompt starter kit</li>
-        <li><span>+</span> 30-day follow-up plan</li>
-      </ul>
-    </article>
-    <article class="card">
-      <p class="eyebrow">Format 02</p>
-          <h3>Full-day build session</h3>
-      <p>We build real assets together: marketing drafts, SOPs, proposals, and analysis.</p>
-      <ul class="list">
-        <li><span>+</span> Live use cases</li>
-        <li><span>+</span> Staff enablement</li>
-        <li><span>+</span> Confidence checks</li>
-      </ul>
-    </article>
-    <article class="card">
-      <p class="eyebrow">Format 03</p>
-          <h3>Workshop + rollout</h3>
-      <p>Includes the training plus a short engagement to lock in the new workflow.</p>
-      <ul class="list">
-        <li><span>+</span> Team adoption plan</li>
-        <li><span>+</span> Prompt library</li>
-        <li><span>+</span> Leadership reporting</li>
-      </ul>
-    </article>
+  <section class="problem surface">
+    <h2>The AI adoption problem.</h2>
+    <p>
+      You bought the ChatGPT seats. Sent around that article about AI productivity gains.
+      Maybe someone on the team used it for a week.
+    </p>
+    <p>
+      Then everyone went back to the way they've always done things.
+    </p>
+    <p>
+      That's not a technology problem. It's a workflow problem. AI tools are only useful when they're
+      wired into the tasks your team does every day — not tried once and forgotten.
+    </p>
+  </section>
+
+  <section id="formats">
+    <h2>Workshop formats.</h2>
+    <p class="section-intro">
+      Every workshop is customized to your team's actual work. We pick real tasks, build real
+      systems, and leave with assets your team uses starting Monday.
+    </p>
+    <div class="card-grid">
+      <article class="card">
+        <p class="eyebrow">Format 01</p>
+        <h3>Half-day workshop</h3>
+        <p>Ideal for leadership teams that want a clear AI workflow and fast adoption plan.</p>
+        <ul class="list">
+          <li><span>+</span> AI workflow map for top 3 tasks</li>
+          <li><span>+</span> Prompt starter kit</li>
+          <li><span>+</span> 30-day follow-up plan</li>
+        </ul>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Format 02</p>
+        <h3>Full-day build session</h3>
+        <p>We build real assets together: marketing drafts, SOPs, proposals, client analysis.</p>
+        <ul class="list">
+          <li><span>+</span> Live use cases from your work</li>
+          <li><span>+</span> Staff enablement and confidence checks</li>
+          <li><span>+</span> Complete prompt library</li>
+        </ul>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Format 03</p>
+        <h3>Workshop + rollout</h3>
+        <p>Training plus a short engagement to lock in the new workflow across your team.</p>
+        <ul class="list">
+          <li><span>+</span> Team adoption plan</li>
+          <li><span>+</span> Custom prompt library</li>
+          <li><span>+</span> Leadership reporting dashboard</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="split">
+    <div>
+      <p class="eyebrow">Before and after</p>
+      <h2>What changes after a workshop.</h2>
+      <p>
+        The difference isn't whether your team knows about AI. It's whether they have a system
+        to use it consistently, with quality controls and measurable outcomes.
+      </p>
+    </div>
+    <div class="surface outcome-panel">
+      <div class="before-after">
+        <div>
+          <p class="eyebrow">Before</p>
+          <ul class="list">
+            <li><span>&times;</span> Scattered experiments with ChatGPT</li>
+            <li><span>&times;</span> No consistent quality or review process</li>
+            <li><span>&times;</span> Time savings unmeasured and unproven</li>
+            <li><span>&times;</span> Leadership unsure if AI investment is worth it</li>
+          </ul>
+        </div>
+        <div>
+          <p class="eyebrow">After</p>
+          <ul class="list">
+            <li><span>+</span> Documented workflows for top 3 tasks</li>
+            <li><span>+</span> Prompt templates with built-in review loops</li>
+            <li><span>+</span> Measurable time savings (8+ hours/week typical)</li>
+            <li><span>+</span> Clear ROI reporting for leadership</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="industries">
+    <p class="eyebrow">Who it's for</p>
+    <h2>AI workflows for your industry.</h2>
+    <div class="card-grid">
+      <article class="card">
+        <h3>Law firms</h3>
+        <p>
+          Research summaries, client intake drafts, contract review checklists, and
+          demand letter templates — all with human review built in.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Contractors and trades</h3>
+        <p>
+          Estimate generation, scope-of-work documents, client communication templates,
+          and job scheduling optimization.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Healthcare practices</h3>
+        <p>
+          Patient communication templates, referral letter drafts, administrative workflow
+          automation, and compliance-safe documentation.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Consultants and advisors</h3>
+        <p>
+          Proposal generation, meeting prep summaries, report drafting, and client
+          deliverable acceleration.
+        </p>
+      </article>
+    </div>
   </section>
 
   <section class="pricing">
@@ -96,7 +194,7 @@ const aiWorkshopServiceSchema = {
         <p>We cover three questions before quoting:</p>
         <ul class="list">
           <li><span>01</span> Which workflows are most expensive today?</li>
-          <li><span>02</span> What does success look like in 30–90 days?</li>
+          <li><span>02</span> What does success look like in 30-90 days?</li>
           <li><span>03</span> What efficiency or revenue lift is realistic?</li>
         </ul>
       </div>
@@ -108,11 +206,11 @@ const aiWorkshopServiceSchema = {
         <h3>Premium</h3>
         <p>Full-day workshop + strategy audit + follow-up consulting.</p>
         <ul class="list">
-          <li><span>+</span> 15–20 hours of follow-up</li>
+          <li><span>+</span> 15-20 hours of follow-up</li>
           <li><span>+</span> Custom prompt library</li>
           <li><span>+</span> Ongoing Q&amp;A access</li>
         </ul>
-        <p class="notice">Typical investment: $8k–$12k+</p>
+        <p class="notice">Typical investment: $8k-$12k+</p>
       </article>
       <article class="card">
         <p class="eyebrow">Option B</p>
@@ -123,7 +221,7 @@ const aiWorkshopServiceSchema = {
           <li><span>+</span> Workflow templates</li>
           <li><span>+</span> 30-day adoption plan</li>
         </ul>
-        <p class="notice">Typical investment: $5k–$8k</p>
+        <p class="notice">Typical investment: $5k-$8k</p>
       </article>
       <article class="card">
         <p class="eyebrow">Option C</p>
@@ -134,60 +232,152 @@ const aiWorkshopServiceSchema = {
           <li><span>+</span> Group training only</li>
           <li><span>+</span> Clear next steps</li>
         </ul>
-        <p class="notice">Typical investment: $2.5k–$4k</p>
+        <p class="notice">Typical investment: $2.5k-$4k</p>
       </article>
     </div>
   </section>
 
-  <section class="split">
-    <div>
-      <p class="eyebrow">Outcomes</p>
-      <h2>What your team walks away with.</h2>
-      <p>
-        We focus on speed, consistency, and measurable time savings. Every workshop is tied to
-        business goals, not AI hype.
-      </p>
-    </div>
-    <div class="surface outcome-panel">
-      <ul class="list">
-        <li><span>01</span> A workflow map for the top 2-3 high value tasks.</li>
-        <li><span>02</span> Prompt templates your team can reuse immediately.</li>
-        <li><span>03</span> A review loop to keep quality and compliance tight.</li>
-        <li><span>04</span> A measurement plan so you can prove ROI.</li>
-      </ul>
+  <section class="faq">
+    <h2>Common questions.</h2>
+    <div class="faq-list">
+      <details>
+        <summary>How long is a typical workshop?</summary>
+        <p>
+          Half-day workshops run 3-4 hours. Full-day sessions are 6-7 hours with breaks.
+          We build in hands-on time so your team practices with their own tasks during the session.
+        </p>
+      </details>
+      <details>
+        <summary>What tools do you cover?</summary>
+        <p>
+          ChatGPT, Claude, and whatever tools make sense for your workflows. We focus on the task
+          first, then pick the right tool — not the other way around.
+        </p>
+      </details>
+      <details>
+        <summary>"It's expensive." Is it worth the investment?</summary>
+        <p>
+          Compared to the cost of slow workflows, most teams see 5-10x returns. If your team
+          saves 8 hours per week at $50/hour, that's over $20,000 per year in recovered capacity.
+        </p>
+      </details>
+      <details>
+        <summary>"We can figure this out ourselves." Can you?</summary>
+        <p>
+          You can. But most teams spend months experimenting when an expert can build the right
+          system in a single day. The question is whether the delay costs you more than the workshop.
+        </p>
+      </details>
+      <details>
+        <summary>Do you offer remote workshops?</summary>
+        <p>
+          Yes. Remote workshops work well for distributed teams. In-person sessions are available
+          throughout New Hampshire and parts of New England.
+        </p>
+      </details>
+      <details>
+        <summary>What does the team walk away with?</summary>
+        <p>
+          A workflow map for 2-3 high-value tasks, prompt templates they can reuse, a review
+          loop for quality and compliance, and a measurement plan to prove ROI.
+        </p>
+      </details>
     </div>
   </section>
 
-  <section class="split">
+  <section class="final-cta surface">
     <div>
-      <p class="eyebrow">Objections</p>
-      <h2>Common questions, answered.</h2>
+      <h2>Ready to stop dabbling and start deploying?</h2>
       <p>
-        Pricing conversations are simpler when we compare cost to outcomes. Here is how I handle
-        the most common objections during workshops.
+        Book a call to discuss your team's workflows. I'll identify the highest-ROI tasks
+        for AI and outline what a workshop would look like for your specific situation.
       </p>
+      <p class="guarantee">
+        No pitch deck. No generic presentation. Just a conversation about your actual work.
+      </p>
+      <a class="btn btn-primary btn-xl" href={BOOKING_URL}>Schedule your workshop call</a>
     </div>
-    <div class="surface outcome-panel">
-      <ul class="list">
-        <li><span>01</span> “It’s expensive.” Compared to the cost of slow workflows, most teams see 5–10x returns.</li>
-        <li><span>02</span> “We can do it in-house.” You can, but most teams want an expert to avoid costly missteps.</li>
-        <li><span>03</span> “Can you discount?” We trade scope, timing, or add-ons instead of cutting value.</li>
-      </ul>
-    </div>
+    <BookingEmbed />
   </section>
 </BaseLayout>
 
 <style>
+  .btn-xl {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.1rem;
+  }
+
   .page-hero {
     display: grid;
     gap: var(--space-lg);
     margin-top: var(--space-3xl);
   }
 
+  .hero-sub {
+    font-size: 1.15rem;
+    max-width: 640px;
+  }
+
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-md);
+  }
+
+  .trust-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md) var(--space-lg);
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  .trust-divider {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--granite-300);
+    flex-shrink: 0;
+  }
+
+  .problem {
+    padding: var(--space-2xl);
+    max-width: 900px;
+    margin: var(--space-3xl) auto;
+  }
+
+  .problem h2 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .problem p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    max-width: 720px;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .outcome-panel {
+    padding: var(--space-xl);
+  }
+
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  .industries {
+    margin: var(--space-3xl) 0;
+  }
+
+  .industries h2 {
+    margin-bottom: var(--space-2xl);
   }
 
   .pricing {
@@ -208,7 +398,84 @@ const aiWorkshopServiceSchema = {
     gap: var(--space-md);
   }
 
-  .outcome-panel {
-    padding: var(--space-xl);
+  .faq {
+    margin: var(--space-3xl) 0;
+  }
+
+  .faq h2 {
+    margin-bottom: var(--space-xl);
+  }
+
+  .faq-list {
+    max-width: 720px;
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  details {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface-strong);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  summary {
+    padding: var(--space-lg);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    flex-shrink: 0;
+    transition: transform 200ms var(--ease-out);
+  }
+
+  details[open] summary::after {
+    content: '\2212';
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details p {
+    padding: 0 var(--space-lg) var(--space-lg);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .final-cta {
+    text-align: left;
+    padding: var(--space-3xl);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .final-cta p {
+    max-width: 600px;
+  }
+
+  .guarantee {
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 920px) {
+    .before-after,
+    .final-cta {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

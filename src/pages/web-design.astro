@@ -1,0 +1,420 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingEmbed from '../components/BookingEmbed.astro';
+import { BOOKING_URL } from '../consts';
+
+const webDesignServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Conversion-Focused Web Design',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Granite State Tech Services',
+    url: 'https://granitestatetechservices.com'
+  },
+  areaServed: {
+    '@type': 'State',
+    name: 'New Hampshire'
+  },
+  serviceType: 'Web design and development',
+  url: 'https://granitestatetechservices.com/web-design',
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/InStock',
+    priceCurrency: 'USD',
+    priceSpecification: {
+      '@type': 'PriceSpecification',
+      minPrice: 1500,
+      maxPrice: 12000,
+      priceCurrency: 'USD'
+    }
+  }
+};
+---
+<BaseLayout
+  title="Web Design for NH Service Businesses | Granite State Tech Services"
+  description="Conversion-focused websites for New Hampshire service businesses. Fast, modern sites with booking built in — designed to turn visitors into consultations."
+  structuredData={webDesignServiceSchema}
+>
+  <section class="page-hero">
+    <p class="eyebrow">Web design for New Hampshire</p>
+    <h1>Websites that turn visitors<br>into booked calls.</h1>
+    <p class="hero-sub">
+      Your website should be your best salesperson — not a brochure nobody reads.
+      We build fast, conversion-focused sites with booking built in, so visitors
+      become consultations in under 60 seconds.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={BOOKING_URL}>Start a web project</a>
+      <a class="btn btn-ghost" href="#how-we-build">See our process</a>
+    </div>
+    <div class="trust-items">
+      <span>NH-based</span>
+      <span class="trust-divider"></span>
+      <span>Conversion-focused</span>
+      <span class="trust-divider"></span>
+      <span>No templates or page builders</span>
+    </div>
+  </section>
+
+  <section class="problem surface">
+    <h2>Your website looks fine. It just doesn't work.</h2>
+    <p>
+      You paid a designer to make it look professional. Maybe it even ranks for a few keywords.
+      But when you check your calendar, it's the same story — leads come from referrals, not
+      your website.
+    </p>
+    <p>
+      The issue isn't aesthetics. It's architecture. Most agency sites are built to look good in a
+      portfolio, not to move a visitor from "just browsing" to "let me book a call."
+    </p>
+    <p>
+      Buried contact forms. No clear next step. Pages that load in four seconds on mobile. These
+      aren't minor issues — they're conversion killers.
+    </p>
+  </section>
+
+  <section id="how-we-build">
+    <h2>What we build differently.</h2>
+    <p class="section-intro">
+      Every site we build starts with one question: what does a visitor need to see, believe, and do
+      before they book a call? Then we build the shortest path to that action.
+    </p>
+
+    <div class="card-grid">
+      <article class="card">
+        <p class="eyebrow">Principle 01</p>
+        <h3>Speed-first architecture</h3>
+        <p>
+          Sub-second load times on mobile. No bloated page builders, no unnecessary plugins.
+          Hand-coded sites that score 95+ on PageSpeed. Every 100ms of delay costs you conversions.
+        </p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Principle 02</p>
+        <h3>Booking-integrated design</h3>
+        <p>
+          Booking widgets on every conversion page. Visitors see your availability and schedule
+          without navigating away. No more "fill out this form and we'll get back to you."
+        </p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Principle 03</p>
+        <h3>SEO-ready from day one</h3>
+        <p>
+          Clean semantic markup, proper heading hierarchy, schema.org structured data, fast Core
+          Web Vitals. Your site starts ranking the week it launches, not months later.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="process">
+    <h2>How it works.</h2>
+    <div class="card-grid">
+      <article class="card">
+        <p class="eyebrow">Step 01</p>
+        <h3>Discovery call</h3>
+        <p>
+          45 minutes to understand your business, your clients, and what's not working. I'll audit your
+          current site live and identify the three highest-impact fixes.
+        </p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Step 02</p>
+        <h3>Design and build</h3>
+        <p>
+          I design and build your site in 2-4 weeks. You'll see progress along the way, not a big
+          reveal at the end. Every page is written to convert, not just describe.
+        </p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Step 03</p>
+        <h3>Launch and optimize</h3>
+        <p>
+          We launch, connect analytics, and set up conversion tracking. Then I monitor performance
+          for 60 days and make adjustments based on real visitor behavior.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="split">
+    <div>
+      <p class="eyebrow">What you get</p>
+      <h2>Clear deliverables. No surprises.</h2>
+      <p>
+        Every web project includes a defined scope, timeline, and list of deliverables.
+        You'll know exactly what you're getting before we start.
+      </p>
+    </div>
+    <div class="surface deliverables-panel">
+      <ul class="list">
+        <li><span>01</span> Responsive design that works on every device.</li>
+        <li><span>02</span> Booking widget integration — Zoho, Calendly, or your preferred tool.</li>
+        <li><span>03</span> On-page SEO: meta tags, schema markup, optimized headings.</li>
+        <li><span>04</span> Google Analytics and conversion tracking setup.</li>
+        <li><span>05</span> 60 days of post-launch support and performance monitoring.</li>
+        <li><span>06</span> Full site ownership — you own everything, no vendor lock-in.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <h2>Straightforward pricing.</h2>
+    <div class="card-grid">
+      <article class="card">
+        <p class="eyebrow">Focused</p>
+        <h3>Landing Page</h3>
+        <p class="price">Starts at $1,500</p>
+        <p>
+          One high-converting landing page for a specific service or campaign. Booking integration,
+          mobile-optimized, SEO-ready. Delivered in 1-2 weeks.
+        </p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Most popular</p>
+        <h3>Full Site</h3>
+        <p class="price">Starts at $3,500</p>
+        <p>
+          Complete 3-5 page website: homepage, service pages, about, and contact. Built for
+          conversions with booking on every page. Delivered in 2-4 weeks.
+        </p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Ongoing</p>
+        <h3>Site + Retainer</h3>
+        <p class="price">Starts at $6,000</p>
+        <p>
+          Full site build plus ongoing monthly maintenance, content updates, and conversion
+          optimization. For businesses that want a site that keeps improving.
+        </p>
+      </article>
+    </div>
+    <p class="pricing-note">
+      Every project starts with a free strategy call where I'll assess your current site
+      and recommend the right scope for your budget.
+    </p>
+  </section>
+
+  <section class="faq">
+    <h2>Straight answers.</h2>
+    <div class="faq-list">
+      <details>
+        <summary>How long does a website project take?</summary>
+        <p>
+          Landing pages take 1-2 weeks. Full sites take 2-4 weeks. Complex projects with custom
+          functionality may take longer — I'll give you a specific timeline on our first call.
+        </p>
+      </details>
+      <details>
+        <summary>Do I need to provide the content?</summary>
+        <p>
+          No. I write conversion-focused copy as part of the project. You'll review and approve
+          everything, but you won't be staring at a blank page.
+        </p>
+      </details>
+      <details>
+        <summary>What platform do you build on?</summary>
+        <p>
+          I build with modern web frameworks (Astro, Next.js) — not WordPress or page builders.
+          The result is faster, more secure, and costs less to host. You own all the code.
+        </p>
+      </details>
+      <details>
+        <summary>Can you redesign my existing site instead of starting over?</summary>
+        <p>
+          Sometimes. If your current site has decent content and structure, a conversion-focused
+          redesign can be faster and cheaper. I'll tell you which approach makes sense on our call.
+        </p>
+      </details>
+      <details>
+        <summary>What happens after launch?</summary>
+        <p>
+          Every project includes 60 days of support. After that, you can manage the site yourself,
+          hire me for ongoing retainer work, or bring in anyone else — no lock-in.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <section class="final-cta surface">
+    <div>
+      <h2>Ready to turn your site into a booking machine?</h2>
+      <p>
+        Book a free strategy call. I'll pull up your current site, show you what's costing you
+        leads, and outline exactly what a conversion-focused rebuild would look like.
+      </p>
+      <p class="guarantee">
+        No contracts. No pitch deck. Just an honest look at what's possible.
+      </p>
+      <a class="btn btn-primary btn-xl" href={BOOKING_URL}>Book your free strategy call</a>
+    </div>
+    <BookingEmbed />
+  </section>
+</BaseLayout>
+
+<style>
+  .btn-xl {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.1rem;
+  }
+
+  .page-hero {
+    display: grid;
+    gap: var(--space-lg);
+    margin-top: var(--space-3xl);
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    max-width: 640px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .trust-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md) var(--space-lg);
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  .trust-divider {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--granite-300);
+    flex-shrink: 0;
+  }
+
+  .problem {
+    padding: var(--space-2xl);
+    max-width: 900px;
+    margin: var(--space-3xl) auto;
+  }
+
+  .problem h2 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .problem p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    max-width: 720px;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .process h2 {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .deliverables-panel {
+    padding: var(--space-xl);
+  }
+
+  .pricing h2 {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .price {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--space-sm);
+  }
+
+  .pricing-note {
+    text-align: center;
+    font-style: italic;
+    margin-top: var(--space-xl);
+    color: var(--text-dim);
+  }
+
+  .faq h2 {
+    margin-bottom: var(--space-xl);
+  }
+
+  .faq-list {
+    max-width: 720px;
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  details {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface-strong);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  summary {
+    padding: var(--space-lg);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    flex-shrink: 0;
+    transition: transform 200ms var(--ease-out);
+  }
+
+  details[open] summary::after {
+    content: '\2212';
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details p {
+    padding: 0 var(--space-lg) var(--space-lg);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .final-cta {
+    text-align: left;
+    padding: var(--space-3xl);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .final-cta p {
+    max-width: 600px;
+  }
+
+  .guarantee {
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 920px) {
+    .final-cta {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
