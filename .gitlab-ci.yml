@@ -5,13 +5,12 @@ workflow:
   rules:
     - if: $CI_COMMIT_BRANCH
 
-deploy-pages:
+pages:
   stage: deploy
   script:
     - npm ci
     - npm run build
-    - cp -r dist public
-  pages: true
+    - mv dist public
   artifacts:
     paths:
       - public

@@ -19,34 +19,39 @@ const navLinks = [
           class="brand-logo"
           src="/logo.jpg"
           alt="Granite State Tech Services logo"
-          width="44"
-          height="44"
+          width="38"
+          height="38"
           loading="eager"
           decoding="async"
         />
       </picture>
-      <span class="brand-text">Granite State Tech Services</span>
+      <span class="brand-text">GSTS</span>
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
-      <span>Menu</span>
-    </button>
     <nav class="nav">
       {navLinks.map((link) => (
         <a href={link.href} class="nav-link">{link.label}</a>
       ))}
     </nav>
     <div class="header-cta">
-      <a class="btn btn-ghost" href="tel:518-929-4295">Call 518-929-4295</a>
-      <a class="btn btn-primary" href={BOOKING_URL}>Schedule a consult</a>
+      <a class="btn btn-primary btn-nav" href={BOOKING_URL}>Book a Call</a>
     </div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
+      <svg class="menu-icon" width="20" height="14" viewBox="0 0 20 14" fill="none">
+        <line class="bar bar-1" x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="2"/>
+        <line class="bar bar-2" x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="2"/>
+        <line class="bar bar-3" x1="4" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </button>
   </div>
   <nav id="mobile-nav" class="mobile-nav" hidden>
-    {navLinks.map((link) => (
-      <a href={link.href} class="mobile-nav-link">{link.label}</a>
-    ))}
+    <div class="mobile-nav-links">
+      {navLinks.map((link) => (
+        <a href={link.href} class="mobile-nav-link">{link.label}</a>
+      ))}
+    </div>
     <div class="mobile-nav-actions">
+      <a class="btn btn-primary" href={BOOKING_URL}>Book a Call</a>
       <a class="btn btn-ghost" href="tel:518-929-4295">Call 518-929-4295</a>
-      <a class="btn btn-primary" href={BOOKING_URL}>Schedule a consult</a>
     </div>
   </nav>
 </header>
@@ -79,7 +84,7 @@ const navLinks = [
     });
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 980) {
+      if (window.innerWidth > 1080) {
         closeMenu();
       }
     });
@@ -91,90 +96,149 @@ const navLinks = [
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(247, 244, 239, 0.92);
-    border-bottom: 1px solid rgba(18, 22, 20, 0.08);
-    backdrop-filter: blur(12px);
-  }
-
-  .menu-toggle {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--border);
-    padding: 0.6rem 1rem;
-    background: rgba(255, 255, 255, 0.8);
-    color: var(--text);
-    font: inherit;
-    font-weight: 600;
+    background: rgba(247, 244, 239, 0.88);
+    border-bottom: 1px solid rgba(18, 22, 20, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 
   .header-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-lg);
-    padding: 1rem var(--space-lg);
+    gap: var(--space-md);
+    padding: 0.75rem var(--space-lg);
+    max-width: var(--container);
+    margin: 0 auto;
   }
 
+  /* Brand */
   .brand {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    font-weight: 600;
+    gap: 0.6rem;
+    flex-shrink: 0;
   }
 
   .brand-logo {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
     object-fit: cover;
-    box-shadow: var(--shadow-soft);
-    border: 1px solid rgba(18, 22, 20, 0.08);
+    border: 1px solid rgba(18, 22, 20, 0.06);
   }
 
   .brand-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
     color: var(--text);
   }
 
+  /* Nav */
   .nav {
     display: flex;
     align-items: center;
-    gap: var(--space-lg);
+    gap: 0.25rem;
+    margin-left: auto;
   }
 
   .nav-link {
+    white-space: nowrap;
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 0.45rem 0.7rem;
+    border-radius: var(--radius-sm);
+    transition: color 150ms ease, background 150ms ease;
   }
 
   .nav-link:hover {
     color: var(--text);
+    background: rgba(18, 22, 20, 0.04);
   }
 
+  /* CTA */
   .header-cta {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    flex-shrink: 0;
+    margin-left: 0.25rem;
   }
 
+  .btn-nav {
+    white-space: nowrap;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  /* Mobile toggle */
+  .menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    padding: 0;
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--text);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 150ms ease;
+  }
+
+  .menu-toggle:hover {
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .bar {
+    transition: transform 250ms var(--ease-out), opacity 200ms ease;
+    transform-origin: center;
+  }
+
+  /* Mobile nav */
   .mobile-nav {
     display: none;
+  }
+
+  .mobile-nav-links {
+    display: grid;
+    gap: 0;
   }
 
   .mobile-nav-link {
     color: var(--text);
     font-weight: 500;
-    padding: 0.45rem 0;
+    font-size: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(18, 22, 20, 0.06);
+    transition: color 150ms ease;
+  }
+
+  .mobile-nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--accent-secondary-strong);
   }
 
   .mobile-nav-actions {
     display: grid;
     gap: var(--space-sm);
-    margin-top: var(--space-sm);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(18, 22, 20, 0.08);
   }
 
-  @media (max-width: 980px) {
+  /* Desktop: hide toggle, show nav */
+  @media (max-width: 1080px) {
     :global(body.menu-open) {
       overflow: hidden;
     }
@@ -194,17 +258,17 @@ const navLinks = [
 
     .mobile-nav {
       display: grid;
-      gap: var(--space-sm);
-      padding: 0 var(--space-lg) var(--space-lg);
-      border-top: 1px solid rgba(18, 22, 20, 0.08);
+      gap: 0;
+      padding: var(--space-md) var(--space-lg) var(--space-lg);
       background: rgba(247, 244, 239, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
   }
 
   @media (max-width: 720px) {
     .header-inner {
-      padding: 0.8rem var(--space-md);
-      gap: var(--space-sm);
+      padding: 0.65rem var(--space-md);
     }
   }
 </style>
