@@ -1,57 +1,138 @@
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div>
-      <p class="footer-brand">Granite State Tech Services</p>
+    <div class="footer-intro">
+      <a class="footer-brand" href="/">
+        <img src="/brand-mark-v2.png" alt="" width="48" height="48" loading="lazy" />
+        <span>Granite State Tech Services</span>
+      </a>
       <p class="footer-copy">AI workshops, SEO strategy, and high-performing websites for New Hampshire businesses.</p>
     </div>
-    <div class="footer-links">
+    <nav class="footer-links" aria-label="Services">
+      <p class="footer-label">Services</p>
       <a href="/web-design/">Web Design</a>
       <a href="/seo/">SEO Services</a>
       <a href="/ai-workshops/">AI Workshops</a>
-      <a href="/blog">Blog</a>
-      <a href="/about">About</a>
-    </div>
-    <div class="footer-links">
+    </nav>
+    <nav class="footer-links" aria-label="Company">
+      <p class="footer-label">Company</p>
+      <a href="/blog/">Blog</a>
+      <a href="/about/">About</a>
+      <a href="https://granitestatetechservices.zohobookings.com">Book a call</a>
+    </nav>
+    <div class="footer-links footer-contact">
+      <p class="footer-label">Direct</p>
       <a href="mailto:granitestatetechservices@gmail.com">granitestatetechservices@gmail.com</a>
       <a href="tel:518-929-4295">518-929-4295</a>
     </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>New Hampshire · Founder-operated</span>
+    <span>© {new Date().getFullYear()} Granite State Tech Services</span>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    border-top: 1px solid rgba(232, 227, 218, 0.08);
-    padding: var(--space-2xl) 0;
-    margin-top: var(--space-3xl);
+    color: var(--paper-100);
+    background: var(--pine-900);
+    border-top: 3px solid var(--copper-500);
+    padding: var(--space-2xl) 0 var(--space-lg);
+    margin-top: var(--space-4xl);
   }
 
   .footer-inner {
     display: grid;
     gap: var(--space-xl);
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: minmax(280px, 1.6fr) repeat(3, minmax(140px, 0.7fr));
     align-items: start;
   }
 
   .footer-brand {
-    font-weight: 600;
-    margin-bottom: var(--space-xs);
-    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    min-height: 48px;
+    font-weight: 700;
+    color: var(--paper-50);
+  }
+
+  .footer-brand img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
   }
 
   .footer-copy {
-    color: var(--text-muted);
+    color: rgba(247, 242, 231, 0.68);
+    max-width: 34rem;
+    margin-top: var(--space-sm);
   }
 
   .footer-links {
     display: grid;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
+    align-content: start;
+  }
+
+  .footer-label {
+    font-family: var(--font-mono);
+    color: var(--copper-300);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
   }
 
   .footer-links a {
-    color: var(--text-muted);
+    color: rgba(247, 242, 231, 0.72);
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
   }
 
   .footer-links a:hover {
-    color: var(--text);
+    color: var(--paper-50);
+  }
+
+  .footer-contact a:first-of-type {
+    overflow-wrap: anywhere;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(247, 242, 231, 0.14);
+    font-family: var(--font-mono);
+    color: rgba(247, 242, 231, 0.6);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 900px) {
+    .footer-inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-intro {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-intro {
+      grid-column: auto;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+    }
   }
 </style>

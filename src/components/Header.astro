@@ -5,53 +5,62 @@ const navLinks = [
   { label: 'Web Design', href: '/web-design/' },
   { label: 'SEO', href: '/seo/' },
   { label: 'AI Workshops', href: '/ai-workshops/' },
-  { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' }
+  { label: 'About', href: '/about/' },
+  { label: 'Blog', href: '/blog/' }
 ];
+
+const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const isCurrent = (href: string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href);
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/">
-      <picture>
-        <source srcset="/logo.avif" type="image/avif" />
-        <source srcset="/logo.webp" type="image/webp" />
-        <img
-          class="brand-logo"
-          src="/logo.jpg"
-          alt="Granite State Tech Services logo"
-          width="38"
-          height="38"
-          loading="eager"
-          decoding="async"
-        />
-      </picture>
-      <span class="brand-text">GSTS</span>
+    <a class="brand" href="/" aria-label="Granite State Tech Services home">
+      <img
+        class="brand-logo"
+        src="/brand-mark-v2.png"
+        alt=""
+        width="52"
+        height="52"
+        loading="eager"
+        decoding="async"
+      />
+      <span class="brand-text">Granite State <span>Tech Services</span></span>
     </a>
-    <nav class="nav">
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
       {navLinks.map((link) => (
-        <a href={link.href} class="nav-link">{link.label}</a>
+        <a href={link.href} class="nav-link" aria-current={isCurrent(link.href) ? 'page' : undefined}>
+          {link.label}
+        </a>
       ))}
     </nav>
-    <div class="header-cta">
-      <a class="btn btn-primary btn-nav" href={BOOKING_URL}>Book a Call</a>
-    </div>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
-      <svg class="menu-icon" width="20" height="14" viewBox="0 0 20 14" fill="none">
-        <line class="bar bar-1" x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="2"/>
-        <line class="bar bar-2" x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="2"/>
-        <line class="bar bar-3" x1="4" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="2"/>
-      </svg>
+
+    <a class="btn btn-primary btn-nav" href={BOOKING_URL}>Book a call</a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation"
+    >
+      <span></span><span></span><span></span>
     </button>
   </div>
-  <nav id="mobile-nav" class="mobile-nav" hidden>
-    <div class="mobile-nav-links">
-      {navLinks.map((link) => (
-        <a href={link.href} class="mobile-nav-link">{link.label}</a>
-      ))}
-    </div>
-    <div class="mobile-nav-actions">
-      <a class="btn btn-primary" href={BOOKING_URL}>Book a Call</a>
-      <a class="btn btn-ghost" href="tel:518-929-4295">Call 518-929-4295</a>
+
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+    <div class="container mobile-nav-inner">
+      <div class="mobile-nav-links">
+        {navLinks.map((link) => (
+          <a href={link.href} class="mobile-nav-link" aria-current={isCurrent(link.href) ? 'page' : undefined}>
+            {link.label}
+          </a>
+        ))}
+      </div>
+      <div class="mobile-nav-actions">
+        <a class="btn btn-primary" href={BOOKING_URL}>Book a call</a>
+        <a class="btn btn-ghost" href="tel:518-929-4295">Call 518-929-4295</a>
+      </div>
     </div>
   </nav>
 </header>
@@ -61,32 +70,39 @@ const navLinks = [
   const toggle = header?.querySelector('.menu-toggle');
   const mobileNav = header?.querySelector('#mobile-nav');
 
-  if (toggle && mobileNav) {
-    const closeMenu = () => {
+  if (header && toggle && mobileNav) {
+    const closeMenu = (restoreFocus = false) => {
       toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
       mobileNav.setAttribute('hidden', '');
       document.body.classList.remove('menu-open');
+      if (restoreFocus) toggle.focus();
+    };
+
+    const openMenu = () => {
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close navigation');
+      mobileNav.removeAttribute('hidden');
+      document.body.classList.add('menu-open');
+      mobileNav.querySelector('a')?.focus();
     };
 
     toggle.addEventListener('click', () => {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      if (isOpen) {
-        mobileNav.setAttribute('hidden', '');
-      } else {
-        mobileNav.removeAttribute('hidden');
-      }
-      document.body.classList.toggle('menu-open', !isOpen);
+      toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
     });
 
-    mobileNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', closeMenu);
+    mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') closeMenu(true);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (toggle.getAttribute('aria-expanded') === 'true' && !header.contains(event.target)) closeMenu();
     });
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 1080) {
-        closeMenu();
-      }
+      if (window.innerWidth > 980) closeMenu();
     });
   }
 </script>
@@ -95,180 +111,222 @@ const navLinks = [
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 10;
-    background: rgba(247, 244, 239, 0.88);
-    border-bottom: 1px solid rgba(18, 22, 20, 0.06);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper-50) 92%, transparent);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
   }
 
   .header-inner {
+    min-height: 76px;
     display: flex;
     align-items: center;
-    gap: var(--space-md);
-    padding: 0.75rem var(--space-lg);
-    max-width: var(--container);
-    margin: 0 auto;
+    gap: clamp(0.75rem, 2vw, 1.6rem);
   }
 
-  /* Brand */
   .brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    flex-shrink: 0;
+    gap: 0.65rem;
+    min-height: 52px;
+    min-width: 0;
+    flex: 0 1 292px;
   }
 
   .brand-logo {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 1px solid rgba(18, 22, 20, 0.06);
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    object-fit: contain;
   }
 
   .brand-text {
-    font-family: var(--font-display);
+    display: flex;
+    flex-direction: column;
+    color: var(--pine-900);
+    font-size: clamp(0.88rem, 1.25vw, 1.02rem);
     font-weight: 700;
-    font-size: 1.05rem;
-    letter-spacing: 0.06em;
-    color: var(--text);
+    letter-spacing: -0.015em;
+    line-height: 1.08;
   }
 
-  /* Nav */
-  .nav {
+  .brand-text span {
+    font-weight: 500;
+    color: var(--ink-600);
+  }
+
+  .desktop-nav {
     display: flex;
-    align-items: center;
-    gap: 0.25rem;
+    align-items: stretch;
+    gap: 0.05rem;
     margin-left: auto;
   }
 
   .nav-link {
-    white-space: nowrap;
-    color: var(--text-muted);
-    font-size: 0.88rem;
-    font-weight: 500;
-    padding: 0.45rem 0.7rem;
-    border-radius: var(--radius-sm);
-    transition: color 150ms ease, background 150ms ease;
-  }
-
-  .nav-link:hover {
-    color: var(--text);
-    background: rgba(18, 22, 20, 0.04);
-  }
-
-  /* CTA */
-  .header-cta {
-    display: flex;
+    position: relative;
+    min-height: 44px;
+    display: inline-flex;
     align-items: center;
-    flex-shrink: 0;
-    margin-left: 0.25rem;
+    padding: 0 0.64rem;
+    color: var(--ink-600);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0.64rem;
+    right: 0.64rem;
+    bottom: 3px;
+    height: 2px;
+    background: var(--copper-500);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 160ms var(--ease-out);
+  }
+
+  .nav-link:hover,
+  .nav-link[aria-current='page'] {
+    color: var(--pine-800);
+  }
+
+  .nav-link:hover::after,
+  .nav-link[aria-current='page']::after {
+    transform: scaleX(1);
   }
 
   .btn-nav {
-    white-space: nowrap;
-    padding: 0.55rem 1.2rem;
-    font-size: 0.85rem;
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding-inline: 1rem;
+    font-size: 0.84rem;
   }
 
-  /* Mobile toggle */
   .menu-toggle {
     display: none;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
+    margin-left: auto;
+    padding: 11px;
+    border: 1px solid var(--pine-700);
     border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    padding: 0;
-    background: rgba(255, 255, 255, 0.7);
-    color: var(--text);
+    background: transparent;
+    color: var(--pine-800);
     cursor: pointer;
-    flex-shrink: 0;
-    transition: background 150ms ease;
   }
 
-  .menu-toggle:hover {
-    background: rgba(255, 255, 255, 1);
-  }
-
-  .menu-icon {
+  .menu-toggle span {
     display: block;
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+    background: currentColor;
+    transition: transform 160ms var(--ease-out), opacity 160ms ease;
   }
 
-  .bar {
-    transition: transform 250ms var(--ease-out), opacity 200ms ease;
-    transform-origin: center;
+  .menu-toggle[aria-expanded='true'] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
   }
 
-  /* Mobile nav */
+  .menu-toggle[aria-expanded='true'] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle[aria-expanded='true'] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
   .mobile-nav {
+    border-top: 1px solid var(--border);
+    background: var(--paper-50);
+  }
+
+  .mobile-nav[hidden] {
     display: none;
+  }
+
+  .mobile-nav-inner {
+    padding-top: var(--space-sm);
+    padding-bottom: var(--space-lg);
   }
 
   .mobile-nav-links {
     display: grid;
-    gap: 0;
   }
 
   .mobile-nav-link {
-    color: var(--text);
-    font-weight: 500;
-    font-size: 1rem;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(18, 22, 20, 0.06);
-    transition: color 150ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 50px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink-700);
+    font-weight: 600;
   }
 
-  .mobile-nav-link:last-child {
-    border-bottom: none;
+  .mobile-nav-link::after {
+    content: '↗';
+    color: var(--copper-600);
   }
 
-  .mobile-nav-link:hover {
-    color: var(--accent-secondary-strong);
+  .mobile-nav-link[aria-current='page'] {
+    color: var(--pine-700);
   }
 
   .mobile-nav-actions {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--space-sm);
-    margin-top: var(--space-md);
-    padding-top: var(--space-md);
-    border-top: 1px solid rgba(18, 22, 20, 0.08);
+    margin-top: var(--space-lg);
   }
 
-  /* Desktop: hide toggle, show nav */
-  @media (max-width: 1080px) {
-    :global(body.menu-open) {
-      overflow: hidden;
+  @media (max-width: 1100px) {
+    .brand {
+      flex-basis: 220px;
+    }
+
+    .nav-link {
+      padding-inline: 0.48rem;
+      font-size: 0.79rem;
+    }
+
+    .nav-link::after {
+      left: 0.48rem;
+      right: 0.48rem;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .header-inner {
+      min-height: 68px;
+    }
+
+    .brand {
+      flex: 0 1 auto;
+    }
+
+    .desktop-nav,
+    .btn-nav {
+      display: none;
     }
 
     .menu-toggle {
-      display: inline-flex;
-      margin-left: auto;
-    }
-
-    .nav {
-      display: none;
-    }
-
-    .header-cta {
-      display: none;
-    }
-
-    .mobile-nav {
-      display: grid;
-      gap: 0;
-      padding: var(--space-md) var(--space-lg) var(--space-lg);
-      background: rgba(247, 244, 239, 0.98);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      display: block;
     }
   }
 
-  @media (max-width: 720px) {
-    .header-inner {
-      padding: 0.65rem var(--space-md);
+  @media (max-width: 400px) {
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      flex-basis: 40px;
+    }
+
+    .brand-text {
+      font-size: 0.8rem;
     }
   }
 </style>

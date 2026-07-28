@@ -136,7 +136,7 @@ const aiWorkshopServiceSchema = {
           <ul class="list">
             <li><span>+</span> Documented workflows for top 3 tasks</li>
             <li><span>+</span> Prompt templates with built-in review loops</li>
-            <li><span>+</span> Measurable time savings (8+ hours/week typical)</li>
+            <li><span>+</span> Tracked time savings in the workflows you choose</li>
             <li><span>+</span> Clear ROI reporting for leadership</li>
           </ul>
         </div>
@@ -257,8 +257,9 @@ const aiWorkshopServiceSchema = {
       <details>
         <summary>"It's expensive." Is it worth the investment?</summary>
         <p>
-          Compared to the cost of slow workflows, most teams see 5-10x returns. If your team
-          saves 8 hours per week at $50/hour, that's over $20,000 per year in recovered capacity.
+          The value depends on the workflows you choose and how often your team runs them.
+          We use the discovery call to compare the cost of the current process with a realistic
+          improvement target before recommending a format.
         </p>
       </details>
       <details>
@@ -380,6 +381,10 @@ const aiWorkshopServiceSchema = {
     margin-bottom: var(--space-2xl);
   }
 
+  .industries .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .pricing {
     display: grid;
     gap: var(--space-2xl);
@@ -475,6 +480,12 @@ const aiWorkshopServiceSchema = {
   @media (max-width: 920px) {
     .before-after,
     .final-cta {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .industries .card-grid {
       grid-template-columns: 1fr;
     }
   }

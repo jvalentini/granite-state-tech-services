@@ -13,16 +13,23 @@ const posts = (await getCollection('blog'))
   description="AI workshops, SEO strategy, and websites that convert for New Hampshire businesses."
 >
   <section class="hero">
-    <p class="eyebrow">New Hampshire's growth partner for service businesses</p>
-    <h1>More booked calls.<br>Less guesswork.</h1>
-    <p class="hero-subhead">
-      Whether you need a website that converts, search rankings that drive calls,
-      or a team that actually uses AI — we build the system that gets your phone ringing.
-    </p>
-    <div class="hero-actions">
-      <a class="btn btn-primary btn-xl" href={BOOKING_URL}>Book your free strategy call</a>
-      <a class="btn btn-ghost" href="#choose-your-path">See how we help</a>
+    <div class="hero-copy">
+      <p class="eyebrow">New Hampshire · Technology + growth consultancy</p>
+      <h1>More booked calls.<br><span>Less guesswork.</span></h1>
+      <p class="hero-subhead">
+        Practical websites, local search strategy, and AI workflows for New Hampshire
+        service businesses that want a clearer path from attention to action.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-xl" href={BOOKING_URL}>Book your free strategy call</a>
+        <a class="btn btn-ghost" href="#choose-your-path">Explore your starting point</a>
+      </div>
     </div>
+    <aside class="hero-field" aria-label="Granite State Tech Services field mark">
+      <span class="field-label">FIELD NOTE / 001</span>
+      <img src="/brand-mark-v2.png" alt="" width="460" height="460" />
+      <span class="field-coordinate">NEW HAMPSHIRE · USA</span>
+    </aside>
   </section>
 
   <section class="trust-bar">
@@ -31,8 +38,41 @@ const posts = (await getCollection('blog'))
       <span class="trust-divider"></span>
       <span>50+ workshops delivered</span>
       <span class="trust-divider"></span>
-      <span>Conversion-focused, not vanity metrics</span>
+      <span>&lt; 24hr response time</span>
     </div>
+  </section>
+
+  <section class="method">
+    <div class="method-intro">
+      <p class="eyebrow">A clearer way to decide</p>
+      <h2>Find the bottleneck. Choose the next move. Measure what happens.</h2>
+      <p>
+        Use three practical questions to make sense of a website, search, or AI workflow problem.
+      </p>
+    </div>
+    <ol class="method-steps">
+      <li>
+        <span>01</span>
+        <div>
+          <h3>Where is progress getting stuck?</h3>
+          <p>Look at the current path and identify the point where attention, time, or momentum is most likely to be lost.</p>
+        </div>
+      </li>
+      <li>
+        <span>02</span>
+        <div>
+          <h3>What is the smallest useful change?</h3>
+          <p>Choose one focused improvement that is clear enough to make, use, and evaluate.</p>
+        </div>
+      </li>
+      <li>
+        <span>03</span>
+        <div>
+          <h3>What evidence will show it worked?</h3>
+          <p>Pick an observable signal before making the change, then compare what happens afterward.</p>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <section id="choose-your-path" class="paths">
@@ -163,7 +203,7 @@ const posts = (await getCollection('blog'))
           <p class="eyebrow">{post.data.tags?.[0] ?? 'Article'}</p>
           <h3>{post.data.title}</h3>
           <p>{post.data.description}</p>
-          <a class="btn btn-ghost" href={`/blog/${post.slug}`}>Read more &rarr;</a>
+          <a class="btn btn-ghost" href={`/blog/${post.slug}/`}>Read more</a>
         </article>
       ))}
     </div>
@@ -192,27 +232,94 @@ const posts = (await getCollection('blog'))
   }
 
   .hero {
-    text-align: center;
-    padding: var(--space-3xl) 0;
+    min-height: min(760px, calc(100vh - 76px));
+    padding: clamp(3rem, 8vw, 7rem) 0;
     margin: var(--space-2xl) 0 var(--space-xl);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xl);
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    gap: clamp(2rem, 7vw, 6rem);
     align-items: center;
+    border-bottom: 1px solid var(--border-strong);
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .hero h1 span {
+    color: var(--pine-700);
   }
 
   .hero-subhead {
-    max-width: 640px;
-    font-size: 1.15rem;
+    max-width: 680px;
+    font-size: clamp(1.08rem, 1.8vw, 1.28rem);
     line-height: 1.7;
-    color: var(--text-dim);
+    color: var(--ink-600);
   }
 
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-md);
-    justify-content: center;
+  }
+
+  .hero-field {
+    position: relative;
+    min-height: 480px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--border-strong);
+    background:
+      repeating-radial-gradient(ellipse at 50% 50%, transparent 0 31px, rgba(30, 81, 69, 0.11) 32px 33px, transparent 34px 48px),
+      rgba(239, 232, 216, 0.5);
+  }
+
+  .hero-field::before,
+  .hero-field::after {
+    content: '';
+    position: absolute;
+    background: var(--border-strong);
+  }
+
+  .hero-field::before {
+    width: 1px;
+    height: 100%;
+  }
+
+  .hero-field::after {
+    width: 100%;
+    height: 1px;
+  }
+
+  .hero-field img {
+    position: relative;
+    z-index: 1;
+    width: 78%;
+    filter: drop-shadow(0 20px 20px rgba(21, 60, 52, 0.14));
+  }
+
+  .field-label,
+  .field-coordinate {
+    position: absolute;
+    z-index: 2;
+    padding: 0.25rem 0.4rem;
+    color: var(--pine-800);
+    background: var(--paper-50);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+
+  .field-label {
+    top: var(--space-sm);
+    left: var(--space-sm);
+  }
+
+  .field-coordinate {
+    right: var(--space-sm);
+    bottom: var(--space-sm);
   }
 
   /* Trust bar */
@@ -270,12 +377,15 @@ const posts = (await getCollection('blog'))
     gap: var(--space-md);
     text-decoration: none;
     color: inherit;
-    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+    border-radius: 0;
+    box-shadow: none;
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms ease;
   }
 
   .path-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+    border-color: var(--copper-500);
+    box-shadow: 5px 5px 0 rgba(185, 107, 43, 0.25);
   }
 
   .path-number {
@@ -344,6 +454,45 @@ const posts = (await getCollection('blog'))
     flex-direction: column;
     gap: var(--space-2xl);
     margin: var(--space-3xl) 0;
+  }
+
+  .method {
+    display: grid;
+    grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 7vw, 6rem);
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--border-strong);
+    border-bottom: 1px solid var(--border-strong);
+  }
+
+  .method-intro {
+    position: sticky;
+    top: 110px;
+    align-self: start;
+  }
+
+  .method-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .method-steps li {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: var(--space-lg);
+    padding: var(--space-xl) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .method-steps li:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .method-steps > li > span {
+    color: var(--copper-600);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
   }
 
   .story-card {
@@ -459,13 +608,44 @@ const posts = (await getCollection('blog'))
   }
 
   @media (max-width: 920px) {
+    .hero,
     .path-grid,
-    .final-cta {
+    .final-cta,
+    .method {
       grid-template-columns: 1fr;
+    }
+
+    .hero {
+      min-height: 0;
+    }
+
+    .hero-field {
+      min-height: 380px;
+      max-width: 600px;
+    }
+
+    .method-intro {
+      position: static;
     }
   }
 
   @media (max-width: 600px) {
+    .hero {
+      padding-block: var(--space-2xl);
+    }
+
+    .hero-field {
+      min-height: 300px;
+    }
+
+    .hero-actions {
+      display: grid;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+    }
+
     .trust-divider {
       display: none;
     }

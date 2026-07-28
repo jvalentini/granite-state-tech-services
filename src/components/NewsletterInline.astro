@@ -9,7 +9,8 @@ import { BUTTONDOWN_EMBED_URL, BUTTONDOWN_TAG_NEWSLETTER } from '../consts';
     <p>Short, practical notes on AI workflows, SEO, and conversion strategy.</p>
   </div>
   <form class="newsletter-form" action={BUTTONDOWN_EMBED_URL} method="POST" target="buttondown-embed-newsletter">
-    <input type="email" name="email" placeholder="you@company.com" required />
+    <label for="newsletter-email">Work email</label>
+    <input id="newsletter-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required />
     <input type="hidden" name="embed" value="1" />
     <input type="hidden" name="tag" value={BUTTONDOWN_TAG_NEWSLETTER} />
     <button class="btn btn-primary" type="submit">Subscribe</button>
@@ -61,11 +62,16 @@ import { BUTTONDOWN_EMBED_URL, BUTTONDOWN_TAG_NEWSLETTER } from '../consts';
     gap: var(--space-sm);
   }
 
+  .newsletter-form label {
+    color: var(--text);
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
   .newsletter-form input {
-    padding: 0.8rem 1rem;
-    border-radius: var(--radius-pill);
-    border: 1px solid rgba(18, 22, 20, 0.2);
-    background: rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-strong);
+    background: var(--surface-strong);
     color: var(--text);
     font-size: 1rem;
   }

@@ -23,7 +23,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueO
         <p>{post.data.description}</p>
         <div class="post-meta">
           <span class="tag">{post.data.pubDate.toLocaleDateString()}</span>
-          <a class="btn btn-ghost" href={`/blog/${post.slug}`}>Read preview</a>
+          <a class="btn btn-ghost" href={`/blog/${post.slug}/`}>Read preview</a>
         </div>
       </article>
     ))}
